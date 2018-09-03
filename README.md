@@ -56,7 +56,7 @@ ATT&amp;CK™ View is bundled with a full adversary emulation plan for APT3 (SOU
 # Accessing ATT&amp;CK™ Data
 To have a better understanding about the database structure, following is  a list of sample SQL queries used to read ATT&amp;CK™. (There are many SQLite management tools, free and paid, runs on Windows, macOS Linux and can be used to access the database content and run SQL queries to extract the data).
 
-*Some of the results from running SQL queries have been truncated for brevity*
+*Some output truncated for brevity*
 
 ### Get the list of ATT&amp;CK™ techniques
 
