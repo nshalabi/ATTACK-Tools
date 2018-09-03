@@ -58,7 +58,7 @@ To have a better understanding about the database structure, following is  a lis
 
 *Some of the results from running SQL queries have been truncated for brevity*
 
-### Get the list of ATT&amp;CK™ Techniques Names
+### Get the list of ATT&amp;CK™ techniques
 
 **SQL**
 
@@ -77,7 +77,7 @@ WHERE type IS "attack-pattern";`
 <tr><td>Account Manipulation</td></tr>
 <tr><td>...</td></tr></table>
 
-### Get the list of ATT&amp;CK™ Techniques Names with STIX 2.0 identifier
+### Get the list of ATT&amp;CK™ techniques names with their STIX 2.0 identifier
 
 **SQL**
 
@@ -101,7 +101,7 @@ WHERE type IS "attack-pattern";`
 
 The external references are stored in external_references table, since one ATT&amp;CK™ technique can have one or more references, the link between the two tables is the technique identifier (check previous query), I will list multiple ways to access the external references
 
-### Get the list of ATT&amp;CK™ Techniques Names and External Names with STIX™ 2.0 identifiers
+### Get the list of ATT&amp;CK™ techniques with external names
 
 **SQL**
 
@@ -150,7 +150,7 @@ WHERE sdos_object.type IS "attack-pattern"
 <tr><td colspan="2">...</td></tr>
 </table>
 
-### List all Malware along with their description
+### List all Malware objects along with their description
 
 **SQL**
 
@@ -190,7 +190,7 @@ SELECT name, description from sdos_object WHERE type IS "intrusion-set";
 <tr><td colspan="2">...</td></tr>
 </table>
 
-### List all Tools and Malware used by certain Adversary
+### List all Tools and Malware used by a certain Adversary
 
 All STIX 2.0 Domain Objects (SDO) are stored in *relatioship* table. The following query is a nested query used to get the tools/malware used by APT3. I will break down the query (in to out):
 
