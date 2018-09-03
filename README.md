@@ -10,9 +10,18 @@ _**DISCLAIMER:** The current version is under development and is released for fe
 
 # Content
 
-* Preview of ATT&amp;CK™ View.
 * Release Notes.
+* Preview of ATT&amp;CK™ View.
 * Accessing ATT&amp;CK™ Data.
+
+# Release Notes
+
+* Password of archives is **password**
+* There are 32 and 64-bit builds (32.zip and 64.zip)
+* ATT&amp;CK™ View database is bundled within the same archive (32.zip and 64.zip) and must be located at same location as the executable
+* All executables are **digitally signed**
+* ATT&amp;CK™ View **IS FREE**
+* All executables are **packed using Themida** (https://www.oreans.com/themida.php)
 
 # Preview of ATT&CK™ View
 
@@ -43,15 +52,6 @@ ATT&amp;CK™ View is bundled with a full adversary emulation plan for APT3 (SOU
 **Plan Exported to Image**
 
 ![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV5.jpg "ATT&amp;CK™ View")
-
-# Release Notes
-
-* Password of archives is **password**
-* There are 32 and 64-bit builds (32.zip and 64.zip)
-* ATT&amp;CK™ View database is bundled within the same archive (32.zip and 64.zip) and must be located at same location as the executable
-* All executables are **digitally signed**
-* ATT&amp;CK™ View **IS FREE**
-* All executables are **packed using Themida** (https://www.oreans.com/themida.php)
 
 # Accessing ATT&amp;CK™ Data
 To have a better understanding about the database structure, following is  a list of sample SQL queries used to read ATT&amp;CK™. (There are many SQLite management tools, free and paid, runs on Windows, macOS Linux and can be used to access the database content and run SQL queries to extract the data).
