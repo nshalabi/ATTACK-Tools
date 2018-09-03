@@ -45,11 +45,11 @@ ATT&amp;CK™ View is bundled with a full adversary emulation plan for APT3 (SOU
 
 ![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV7.png "ATT&amp;CK™ View")
 
-**Plan Exported to Excel**
+**APT3 Plan Exported to Excel**
 
 ![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV4.png "ATT&amp;CK™ View")
 
-**Plan Exported to Image**
+**APT3 Plan Exported to Image**
 
 ![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV5.jpg "ATT&amp;CK™ View")
 
