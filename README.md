@@ -192,10 +192,7 @@ SELECT name, description from sdos_object WHERE type IS "intrusion-set";
 
 ### List all Tools and Malware used by a certain Adversary
 
-All STIX 2.0 Domain Objects (SDO) are stored in *relatioship* table. The following query is a nested query used to get the tools/malware used by APT3. I will break down the query:
-
-1. Get the list of objects used by **APT3** with identifier "**intrusion-set--0bbdf25b-30ff-4894-a1cd-49260d0dd2d9**" (source) from *relationship* table
-2. Filter the list to include the **name** and **description** of objects of type malware/tools
+All STIX 2.0 Domain Objects (SDO) relations are stored in *"relatioship"* table. The following query is a nested query used to get the tools/malware used by APT3:
 
 **SQL**
 
@@ -203,9 +200,9 @@ All STIX 2.0 Domain Objects (SDO) are stored in *relatioship* table. The followi
 SELECT name, description
 FROM sdos_object
 WHERE (type IS "malware" OR type IS "tool") -- Query for tools or malware
-  AND id IN (SELECT target_ref -- This is the malware/tool identifier
+  AND id IN (SELECT target_ref -- filter tools/malware associated with APT3
              FROM relationship
-             WHERE relationship_type IS "uses"
+             WHERE relationship_type IS "uses" -- Source "uses" Target
                AND source_ref IS -- Source is APT3 identifier
                    "intrusion-set--0bbdf25b-30ff-4894-a1cd-49260d0dd2d9");
 ```
