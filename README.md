@@ -68,7 +68,7 @@ WHERE type IS "attack-pattern";`
 
 **OUTPUT**
 
-<table border="1" style="border-collapse:collapse">
+<table>
 <tr><th>name</th></tr>
 <tr><td>.bash_profile and .bashrc</td></tr>
 <tr><td>Access Token Manipulation</td></tr>
