@@ -87,7 +87,7 @@ WHERE type IS "attack-pattern";`
 
 **OUTPUT**
 
-<table border="1" style="border-collapse:collapse">
+<table>
 <tr><th>id</th><th>name</th></tr>
 <tr><td>attack-pattern--01df3350-ce05-4bdf-bdf8-0a919a66d4a8</td><td>.bash_profile and .bashrc</td></tr>
 <tr><td>attack-pattern--dcaa092b-7de9-4a21-977f-7fcb77e89c48</td><td>Access Token Manipulation</td></tr>
@@ -115,7 +115,7 @@ WHERE sdos_object.type IS "attack-pattern"
 
 **OUTPUT**
 
-<table border="1" style="border-collapse:collapse">
+<table>
 <tr><th>name</th><th>external_id</th></tr>
 <tr><td>.bash_profile and .bashrc</td><td>T1156</td></tr>
 <tr><td>Access Token Manipulation</td><td>T1134</td></tr>
@@ -140,7 +140,7 @@ WHERE sdos_object.type IS "attack-pattern"
 
 **OUTPUT**
 
-<table border="1" style="border-collapse:collapse">
+<table>
 <tr><th>name</th><th>external_id</th></tr>
 <tr><td>Access Token Manipulation</td><td>T1134</td></tr>
 <tr><td>Accessibility Features</td><td>T1015</td></tr>
@@ -160,7 +160,7 @@ SELECT name, description from sdos_object WHERE type IS "malware";
 
 **OUTPUT**
 
-<table border="1" style="border-collapse:collapse">
+<table>
 <tr><th>name</th><th>description</th></tr>
 <tr><td>3PARA RAT</td><td>3PARA RAT is a remote access tool (RAT) programmed in C++ that has been used by Putter Panda. (Citation: CrowdStrike Putter Panda)<br/><br/>Aliases: 3PARA RAT</td></tr>
 <tr><td>4H RAT</td><td>4H RAT is malware that has been used by Putter Panda since at least 2007. (Citation: CrowdStrike Putter Panda)<br/><br/>Aliases: 4H RAT</td></tr>
@@ -180,7 +180,7 @@ SELECT name, description from sdos_object WHERE type IS "intrusion-set";
 
 **OUTPUT**
 
-<table border="1" style="border-collapse:collapse">
+<table>
 <tr><th>name</th><th>description</th></tr>
 <tr><td>APT1</td><td>APT1 is a Chinese threat group that has been attributed to the 2nd Bureau of the People’s Liberation Army (PLA) General Staff Department’s (GSD) 3rd Department, commonly known by its Military Unit Cover Designator (MUCD) as Unit 61398. (Citation: Mandiant APT1)</td></tr>
 <tr><td>APT12</td><td>APT12 is a threat group that has been attributed to China. (Citation: Meyers Numbered Panda)</td></tr>
@@ -209,7 +209,7 @@ WHERE (type IS "malware" OR type IS "tool") -- Query for tools or malware
 
 **OUTPUT**
 
-<table border="1" style="border-collapse:collapse">
+<table>
 <tr><th>name</th><th>description</th></tr>
 <tr><td>OSInfo</td><td>OSInfo is a custom tool used by APT3 to do internal discovery on a victim&#39;s computer and network.  (Citation: Symantec Buckeye)<br/><br/>Aliases: OSInfo</td></tr>
 <tr><td>PlugX</td><td>PlugX is a remote access tool (RAT) that uses modular plugins. (Citation: Lastline PlugX Analysis) It has been used by multiple threat groups. (Citation: FireEye Clandestine Fox Part 2) (Citation: New DragonOK) (Citation: Dell TG-3390)<br/><br/>Aliases: PlugX, Sogu, Kaba, Korplug</td></tr>
