@@ -12,7 +12,8 @@ _**DISCLAIMER:** The current version is under development and is released for fe
 
 * Release Notes.
 * Preview of ATT&amp;CK™ View.
-* Accessing ATT&amp;CK™ Data.
+* The ATT&amp;CK™ Data Model
+* Accessing ATT&amp;CK™ Data with SQL.
 
 # Release Notes
 
@@ -25,35 +26,15 @@ _**DISCLAIMER:** The current version is under development and is released for fe
 
 # Preview of ATT&CK™ View
 
-ATT&amp;CK™ View is bundled with a full adversary emulation plan for APT3 (SOURCE : https://attack.mitre.org/wiki/Adversary_Emulation_Plans), following are screenshots of the tool with APT3 plan
-
-**Main View**
+ATT&amp;CK™ View comes bundled with a full adversary emulation plan for APT3 developed by MITRE™ (SOURCE : https://attack.mitre.org/wiki/Adversary_Emulation_Plans)
 
 ![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV1.png "ATT&amp;CK™ View")
 
-**Plan Coverage View**
+# The ATT&amp;CK™ Data Model (ATT&amp;CK™ Data & Adversary Emulation)
 
-![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV2.png "ATT&amp;CK™ View")
+![ATT&amp;CK™ Data Model](https://nosecurecode.blog/wp-content/uploads/2018/09/ATTACKDataModel.png "ATT&amp;CK™ Data Model")
 
-**KB View**
-
-![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV3.png "ATT&amp;CK™ View")
-
-**Testing Guideline Editor**
-
-![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV6.png "ATT&amp;CK™ View")
-
-![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV7.png "ATT&amp;CK™ View")
-
-**APT3 Plan Exported to Excel**
-
-![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV4.png "ATT&amp;CK™ View")
-
-**APT3 Plan Exported to Image**
-
-![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV5.jpg "ATT&amp;CK™ View")
-
-# Accessing ATT&amp;CK™ Data
+# Accessing ATT&amp;CK™ Data with SQL
 To have a better understanding about the database structure, following is  a list of sample SQL queries used to read ATT&amp;CK™. (There are many SQLite management tools, free and paid, runs on Windows, macOS Linux and can be used to access the database content and run SQL queries to extract the data).
 
 *Some output truncated for brevity*
