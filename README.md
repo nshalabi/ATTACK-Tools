@@ -50,7 +50,7 @@ ATT&amp;CK™ View comes bundled with a full adversary emulation plan for APT3 d
 
 # The Data Model
 
-The following is a conceptual model that can be implemented using any database technology (The -attack_view_db_structure.sql _ is a good starting point).
+The following is a conceptual model that can be implemented using any database technology (The _attack_view_db_structure.sql_ is a good starting point).
 
 ![ATT&amp;CK™ Data Model](https://nosecurecode.blog/wp-content/uploads/2018/09/ATTACKDataModel.png "ATT&amp;CK™ Data Model")
 
