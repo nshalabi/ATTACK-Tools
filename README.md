@@ -1,58 +1,129 @@
-# ATT&amp;CK™-Tools
-_Utilities for MITRE™ ATT&amp;CK™_
+#ATT&CK™-Tools
+
+*Utilities for MITRE™ ATT&CK™*
 
 This repository contains the following:
 
-* **ATT&amp;CK™ Data Model:** a relational data model for ATT&amp;CK™ and STIX™ (SQLite for simplicity and portability, support for other relational databases is under development).
-* **ATT&amp;CK™ View:** an adversary emulation planning tool.
+-   **ATT&CK™ Data Model:** a relational data model for ATT&CK™ and STIX™
+    (SQLite for simplicity and portability, support for other relational
+    databases is under development).
 
-_**DISCLAIMER:** The current version is under development and is released for feedback, you can send  me feedback through GitHub or directly by email at **nader@nosecurecode.com**_
+-   **ATT&CK™ View:** an adversary emulation planning tool.
 
-# Content
+#Content
 
-* Release Notes.
-* Preview of ATT&amp;CK™ View.
-* The ATT&amp;CK™ Data Model
-* Accessing ATT&amp;CK™ Data with SQL.
+-   Release Notes
 
-# Release Notes
+-   Overview
 
-* Password of archives is **password**
-* There are 32 and 64-bit builds (32.zip and 64.zip)
-* ATT&amp;CK™ View database is bundled within the same archive (32.zip and 64.zip) and must be located at same location as the executable
-* All executables are **digitally signed**
-* ATT&amp;CK™ View **IS FREE**
-* All executables are **packed using Themida** (https://www.oreans.com/themida.php)
+-   The ATT&CK™ Data Model
 
-# Preview of ATT&CK™ View
+-   Accessing ATT&CK™ Data with SQL
 
-ATT&amp;CK™ View comes bundled with a full adversary emulation plan for APT3 developed by MITRE™ (SOURCE : https://attack.mitre.org/wiki/Adversary_Emulation_Plans)
+#Release Notes
 
-![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV1.png "ATT&amp;CK™ View")
+-   Password of archives is **password**
 
-**Testing Guideline Editor**
+-   There are 32 and 64-bit builds (32.zip and 64.zip)
 
-![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV6.png "ATT&amp;CK™ View")
+-   ATT&CK™ View database is bundled within the same archive (32.zip and 64.zip)
+    and must be located at same location as the executable
 
-![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV7.png "ATT&amp;CK™ View")
+-   All executables are **digitally signed**
 
-**APT3 Plan Exported to Excel**
+-   ATT&CK™ View **IS FREE**
 
-![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV4.png "ATT&amp;CK™ View")
+-   All executables are **packed using Themida**
+    (https://www.oreans.com/themida.php)
 
-**Plan Coverage View**
+#Overview
 
-![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV2.png "ATT&amp;CK™ View")
+ATT&CK™ View is planning tool that help defenders in designing adversary
+emulation plans based on MITRE™ ATT&CK™ framework. ATT&CK™ View comes bundled
+with a full adversary emulation plan for **APT3** developed by MITRE™ (SOURCE :
+https://attack.mitre.org/wiki/Adversary_Emulation_Plans).
 
-**Content Search**
+Following is a description to the various UI elements.
 
-![ATT&amp;CK™ View](https://nosecurecode.blog/wp-content/uploads/2018/08/AV3.png "ATT&amp;CK™ View")
+**Planner View** with annotation about main features, from here, plans and tests
+can be created, edited, copied or deleted. There are two options available to
+export the tests in this view (check “Spreadsheet View” for other export
+options):
 
-# The Data Model
+-   Export the diagram to a bitmap image
 
-The following is a conceptual model that can be implemented using any database technology (The _attack_view_db_structure.sql_ is a good starting point).
+-   Export the tests ATT&CK™ techniques to MITRE™ Navigator, this option
+    provides additionally two other options: export the plan techniques only or
+    export the currently loaded plan in addition to the techniques of another
+    plan for comparison, check the next screenshot.
 
-![ATT&amp;CK™ Data Model](https://nosecurecode.blog/wp-content/uploads/2018/09/ATTACKDataModel.png "ATT&amp;CK™ Data Model")
+![](https://nosecurecode.blog/wp-content/uploads/2018/09/MainView2.png)
+
+Navigator Export Options
+
+![](https://nosecurecode.blog/wp-content/uploads/2018/09/4.png)
+
+Exported Plan with Comparison
+
+![](https://nosecurecode.blog/wp-content/uploads/2018/09/9.png)
+
+**Test Editor**, the Test Editor allows for mapping tests to ATT&CK™ Techniques,
+Colorize and Tag tests, select a framework (custom frameworks can be added too),
+lookup **ATOMIC** Tests (https://atomicredteam.io, the small “A” button will
+turn red) and other tests meta-data.
+
+![](https://nosecurecode.blog/wp-content/uploads/2018/09/2.png)
+
+**Spreadsheet View**, this view lists all tests according to their order (check
+planner to know how to arrange and order tests), this view can be exported to
+**Excel** and **HTML** formats, which fields to be exported can also be
+specified
+
+![](https://nosecurecode.blog/wp-content/uploads/2018/09/6.png)
+
+Plan Exported to Excel
+
+![](https://nosecurecode.blog/wp-content/uploads/2018/09/11.png)
+
+Plan Exported to HTML
+
+![](https://nosecurecode.blog/wp-content/uploads/2018/09/10.png)
+
+**Coverage View**, this view helps in highlighting the plan coverage regarding
+certain adversaries techniques by showing targeted adversary emulation
+techniques that have not been planned for, which are showing in the last list
+labeled “Techniques not in Plan, this list can be used to quickly add those
+techniques to the plan. This view also highlights techniques used in the plan
+that do not map to the adversary emulation under testing (the list in the
+middle, the techniques are colored differently)
+
+![](https://nosecurecode.blog/wp-content/uploads/2018/09/7.png)
+
+**Search View**, this view is meant to provide a free search through all plans
+content (plans, tests, tags, and the rest of the associated meta-data) in
+addition to ATT&CK™ framework and ATOMIC™ Tests.
+
+The “View...” action depends on the content type, if it is part of the plans, it
+will show it in it’s own editor, else, if the content is related to ATT&CK™ or
+ATOMIC™ frameworks, it will launch the default browser with related URL.
+
+The search also highlights where the search content was found, for example, a
+test “implementation” field, a Technique “description”, etc., to make it easier
+to quickly get to the source of data, the search view can be grouped and
+re-arranged as in the second screenshot
+
+![](https://nosecurecode.blog/wp-content/uploads/2018/09/8.png)
+
+Organized Search View
+
+![](https://nosecurecode.blog/wp-content/uploads/2018/09/8_1.png)
+
+#The ATT&CK™ Data Model
+
+The following is a conceptual model that can be implemented using any database
+technology (The *attack_view_db_structure.sql* is a good starting point).
+
+![](https://nosecurecode.blog/wp-content/uploads/2018/09/ATTACKDataModel-1.png)
 
 # Accessing ATT&amp;CK™ Data with SQL
 To have a better understanding about the database structure, following is  a list of sample SQL queries used to read ATT&amp;CK™. (There are many SQLite management tools, free and paid, runs on Windows, macOS Linux and can be used to access the database content and run SQL queries to extract the data).
@@ -219,3 +290,25 @@ WHERE (type IS "malware" OR type IS "tool") -- Query for tools or malware
 <tr><td>schtasks</td><td>schtasks is used to schedule execution of programs or scripts on a Windows system to run at a specific date and time. (Citation: TechNet Schtasks)<br/><br/>Aliases: schtasks, schtasks.exe</td></tr>
 <tr><td colspan="2">...</td></tr>
 </table>
+
+### Get ATOMIC™ test for a certain technique
+
+ATOMIC Tests are stored in three tables
+- atomic_test table, this table simply maps ATOMIC™ to ATT&CK™, for example, each atomic_test record has one or more atomic_attack_test records (the actual tests)
+- atomic_attack_test, this tables holds the actual ATOMIC™ tests, each test has one or more input arguments represented with atomic_input_arguments
+- atomic_input_arguments, holds tests input arguments
+
+The following SQL statement retrieves the ATOMIC tests associated with ATT&CK technique "T1031"
+
+**SQL**
+
+```
+SELECT name, description, executor_name, executor_commandFROM atomic_attack_test  WHERE fk_atomic_attack_id IN 
+    (SELECT id FROM atomic_attack 
+     WHERE fk_attack_external_id IS "T1031");
+```
+
+**OUTPUT**
+
+<table><tr><th>name</th><th>description</th><th>executor_name</th><th>executor_command</th></tr><tr><td>Modify Fax service to run PowerShell</td><td>This test will temporarily modify the service Fax by changing the binPath to PowerShell<br/>and will then revert the binPath change, restoring Fax to its original state.</td><td>command_prompt</td><td>sc config Fax binPath= &quot;C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe -noexit -c \&quot;write-host &#39;T1031 Test&#39;\&quot;&quot;<br/>sc start Fax<br/>sc config Fax binPath= &quot;C:\WINDOWS\system32\fxssvc.exe&quot;</td></tr></table>
+
