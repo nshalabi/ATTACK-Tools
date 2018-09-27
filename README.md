@@ -1,4 +1,4 @@
-#ATT&CK™-Tools
+# ATT&CK™-Tools
 
 *Utilities for MITRE™ ATT&CK™*
 
@@ -10,7 +10,7 @@ This repository contains the following:
 
 -   **ATT&CK™ View:** an adversary emulation planning tool.
 
-#Content
+# Content
 
 -   Release Notes
 
@@ -20,7 +20,7 @@ This repository contains the following:
 
 -   Accessing ATT&CK™ Data with SQL
 
-#Release Notes
+# Release Notes
 
 -   Password of archives is **password**
 
@@ -36,7 +36,7 @@ This repository contains the following:
 -   All executables are **packed using Themida**
     (https://www.oreans.com/themida.php)
 
-#Overview
+# Overview
 
 ATT&CK™ View is planning tool that help defenders in designing adversary
 emulation plans based on MITRE™ ATT&CK™ framework. ATT&CK™ View comes bundled
@@ -118,7 +118,7 @@ Organized Search View
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/8_1.png)
 
-#The ATT&CK™ Data Model
+# The ATT&CK™ Data Model
 
 The following is a conceptual model that can be implemented using any database
 technology (The *attack_view_db_structure.sql* is a good starting point).
@@ -303,12 +303,16 @@ The following SQL statement retrieves the ATOMIC tests associated with ATT&CK te
 **SQL**
 
 ```
-SELECT name, description, executor_name, executor_commandFROM atomic_attack_test  WHERE fk_atomic_attack_id IN 
+SELECT name, description, executor_name, executor_command
+FROM atomic_attack_test
+  WHERE fk_atomic_attack_id IN 
     (SELECT id FROM atomic_attack 
      WHERE fk_attack_external_id IS "T1031");
 ```
 
 **OUTPUT**
 
-<table><tr><th>name</th><th>description</th><th>executor_name</th><th>executor_command</th></tr><tr><td>Modify Fax service to run PowerShell</td><td>This test will temporarily modify the service Fax by changing the binPath to PowerShell<br/>and will then revert the binPath change, restoring Fax to its original state.</td><td>command_prompt</td><td>sc config Fax binPath= &quot;C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe -noexit -c \&quot;write-host &#39;T1031 Test&#39;\&quot;&quot;<br/>sc start Fax<br/>sc config Fax binPath= &quot;C:\WINDOWS\system32\fxssvc.exe&quot;</td></tr></table>
+<table>
+<tr><th>name</th><th>description</th><th>executor_name</th><th>executor_command</th></tr>
+<tr><td>Modify Fax service to run PowerShell</td><td>This test will temporarily modify the service Fax by changing the binPath to PowerShell<br/>and will then revert the binPath change, restoring Fax to its original state.</td><td>command_prompt</td><td>sc config Fax binPath= &quot;C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe -noexit -c \&quot;write-host &#39;T1031 Test&#39;\&quot;&quot;<br/>sc start Fax<br/>sc config Fax binPath= &quot;C:\WINDOWS\system32\fxssvc.exe&quot;</td></tr></table>
 
