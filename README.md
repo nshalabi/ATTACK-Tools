@@ -39,7 +39,6 @@ can be created, edited, copied or deleted, there are also options available to e
 options):
 
 -   Export the diagram to a bitmap image
-
 -   Export the currently loaded (active) plan techniques to MITRE™ Navigator, this option also allows exporting a second plan techniques for comparison with the currently active plan, check the next screenshot.
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/MainView2.png)
