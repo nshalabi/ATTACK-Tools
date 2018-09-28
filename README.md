@@ -45,7 +45,7 @@ https://attack.mitre.org/wiki/Adversary_Emulation_Plans).
 
 Following is a description to the various UI elements.
 
-**Planner View** with annotation about main features, from here, plans and tests
+**Planner View** in this view, plans and tests
 can be created, edited, copied or deleted. There are two options available to
 export the tests in this view (check “Spreadsheet View” for other export
 options):
