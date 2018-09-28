@@ -1,38 +1,27 @@
 # ATT&CK™-Tools
-
-*Utilities for MITRE™ ATT&CK™*
+### Utilities for MITRE™ ATT&CK™
 
 This repository contains the following:
 
 -   **ATT&CK™ Data Model:** a relational data model for ATT&CK™ and STIX™
     (SQLite for simplicity and portability, support for other relational
     databases is under development).
-
 -   **ATT&CK™ View:** an adversary emulation planning tool.
 
 # Content
 
 -   Release Notes
-
 -   Overview
-
 -   The ATT&CK™ Data Model
-
 -   Accessing ATT&CK™ Data with SQL
 
 # Release Notes
 
 -   Password of archives is **password**
-
 -   There are 32 and 64-bit builds (32.zip and 64.zip)
-
--   ATT&CK™ View database is bundled within the same archive (32.zip and 64.zip)
-    and must be located at same location as the executable
-
+-   ATT&CK™ View database is bundled within the same archive (32.zip and 64.zip) and must be located at same location as the executable
 -   All executables are **digitally signed**
-
 -   ATT&CK™ View **IS FREE**
-
 -   All executables are **packed using Themida**
     (https://www.oreans.com/themida.php)
 
@@ -45,32 +34,26 @@ https://attack.mitre.org/wiki/Adversary_Emulation_Plans).
 
 Following is a description to the various UI elements.
 
-**Planner View** in this view, plans and tests
-can be created, edited, copied or deleted. There are two options available to
-export the tests in this view (check “Spreadsheet View” for other export
+**Planner View**, in this view, plans and tests
+can be created, edited, copied or deleted, there are also options available to export tests (check “Spreadsheet View” for other export
 options):
 
 -   Export the diagram to a bitmap image
 
--   Export the tests ATT&CK™ techniques to MITRE™ Navigator, this option
-    provides additionally two other options: export the plan techniques only or
-    export the currently loaded plan in addition to the techniques of another
-    plan for comparison, check the next screenshot.
+-   Export the currently loaded (active) plan techniques to MITRE™ Navigator, this option also allows exporting a second plan techniques for comparison with the currently active plan, check the next screenshot.
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/MainView2.png)
 
-Navigator Export Options
+> Navigator Export Options
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/4.png)
 
-Exported Plan with Comparison
+> Exported Plan with Comparison
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/9.png)
 
 **Test Editor**, the Test Editor allows for mapping tests to ATT&CK™ Techniques,
-Colorize and Tag tests, select a framework (custom frameworks can be added too),
-lookup **ATOMIC** Tests (https://atomicredteam.io, the small “A” button will
-turn red) and other tests meta-data.
+Colorize and Tag tests, select a framework (custom frameworks can be added too), lookup **Atomic™ Red Team** Tests (https://atomicredteam.io, the small “A” button will turn red) and other tests meta-data.
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/2.png)
 
@@ -81,40 +64,30 @@ specified
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/6.png)
 
-Plan Exported to Excel
+> Plan Exported to Excel
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/11.png)
 
-Plan Exported to HTML
+> Plan Exported to HTML
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/10.png)
 
-**Coverage View**, this view helps in highlighting the plan coverage regarding
-certain adversaries techniques by showing targeted adversary emulation
-techniques that have not been planned for, which are showing in the last list
-labeled “Techniques not in Plan, this list can be used to quickly add those
-techniques to the plan. This view also highlights techniques used in the plan
-that do not map to the adversary emulation under testing (the list in the
-middle, the techniques are colored differently)
+**Coverage View**, this view helps in highlighting the plan coverage in relation to a certain adversary (group) techniques, by showing the techniques that have not been planned for in the last list labeled *“Techniques not in Plan"*, this list can be used to quickly add those techniques to the plan too. This view also highlights techniques used in the plan that do not map to the adversary emulation under testing (the list in the middle, the techniques are colored differently)
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/7.png)
 
 **Search View**, this view is meant to provide a free search through all plans
 content (plans, tests, tags, and the rest of the associated meta-data) in
-addition to ATT&CK™ framework and ATOMIC™ Tests.
+addition to ATT&CK™ framework and Atomic™ Tests.
 
-The “View...” action depends on the content type, if it is part of the plans, it
-will show it in it’s own editor, else, if the content is related to ATT&CK™ or
-ATOMIC™ frameworks, it will launch the default browser with related URL.
+The *“View...”* action depends on the content type, if it is part of the plans, it will show up in it’s own editor. If the content is related to
+ATT&CK™ or Atomic™ frameworks, it will point the default web browser to the related external URL.
 
-The search also highlights where the search content was found, for example, a
-test “implementation” field, a Technique “description”, etc., to make it easier
-to quickly get to the source of data, the search view can be grouped and
-re-arranged as in the second screenshot
+The search also highlights where the content source (data fields), for example, a test *“implementation”* field, a Technique *“description”*, etc., to make it easier to get to the source of desired data, the search view can be grouped and re-arranged as in the second screenshot
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/8.png)
 
-Organized Search View
+> Organized Search View
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/8_1.png)
 
@@ -179,10 +152,12 @@ The external references are stored in external_references table, since one ATT&a
 
 ```
 SELECT name, external_id
-FROM sdos_object
-       INNER JOIN external_references ON sdos_object.id = external_references.fk_object_id
-WHERE sdos_object.type IS "attack-pattern"
-  AND external_references.source_name IS "mitre-attack";
+FROM sdos_object INNER JOIN external_references ON 
+     sdos_object.id = external_references.fk_object_id
+WHERE 
+  sdos_object.type IS "attack-pattern"
+  AND 
+  external_references.source_name IS "mitre-attack";
 ```
 
 **OUTPUT**
@@ -203,11 +178,12 @@ WHERE sdos_object.type IS "attack-pattern"
 
 ```
 SELECT name, external_id
-FROM sdos_object
-       INNER JOIN external_references ON sdos_object.id = external_references.fk_object_id
-WHERE sdos_object.type IS "attack-pattern"
-  AND x_mitre_platforms_windows IS "true"
-  AND external_references.source_name IS "mitre-attack";
+FROM sdos_object INNER JOIN external_references ON
+     sdos_object.id = external_references.fk_object_id
+WHERE 
+  sdos_object.type IS "attack-pattern" AND 
+  x_mitre_platforms_windows IS "true" AND 
+  external_references.source_name IS "mitre-attack";
 ```
 
 **OUTPUT**
@@ -227,7 +203,8 @@ WHERE sdos_object.type IS "attack-pattern"
 **SQL**
 
 ```
-SELECT name, description from sdos_object WHERE type IS "malware";
+SELECT name, description FROM sdos_object 
+WHERE type IS "malware";
 ```
 
 **OUTPUT**
@@ -247,7 +224,8 @@ SELECT name, description from sdos_object WHERE type IS "malware";
 **SQL**
 
 ```
-SELECT name, description from sdos_object WHERE type IS "intrusion-set";
+SELECT name, description FROM sdos_object 
+WHERE type IS "intrusion-set";
 ```
 
 **OUTPUT**
