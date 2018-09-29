@@ -265,14 +265,14 @@ WHERE (type IS "malware" OR type IS "tool") -- Query for tools or malware
 <tr><td colspan="2">...</td></tr>
 </table>
 
-### Get ATOMIC™ test for a certain technique
+### Get an ATOMIC™ test(s) associated with ATT&CK™ technique
 
-ATOMIC Tests are stored in three tables
+ATOMIC™ Tests are stored in three tables
 - atomic_test table, this table simply maps ATOMIC™ to ATT&CK™, for example, each atomic_test record has one or more atomic_attack_test records (the actual tests)
 - atomic_attack_test, this tables holds the actual ATOMIC™ tests, each test has one or more input arguments represented with atomic_input_arguments
 - atomic_input_arguments, holds tests input arguments
 
-The following SQL statement retrieves the ATOMIC tests associated with ATT&CK technique "T1031"
+The following SQL statement retrieves the ATOMIC™ test(s) associated with ATT&CK™ technique "T1031"
 
 **SQL**
 
