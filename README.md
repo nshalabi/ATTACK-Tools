@@ -66,7 +66,7 @@ options):
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/10.png)
 
-**Coverage View**, this view helps in highlighting the plan coverage in relation to a certain adversary (group) techniques, by showing the  techniques that have not been planned for (this is the list labeled *“Techniques not in Plan"*, this list can also be used to quickly add those techniques to the plan).
+**Coverage View**, this view helps in highlighting the plan coverage in relation to a certain adversary (group) techniques, by showing the  techniques that have not been planned for (this is the list labeled *“Techniques not in Plan"*, this list can also be used to quickly add missing techniques to the plan).
 Additionally, this view highlights techniques used in the plan that do not map to the adversary under emulation (this is the list in the middle, the techniques are highlighted with a different color)
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/7.png)
