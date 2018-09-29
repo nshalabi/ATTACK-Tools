@@ -71,11 +71,11 @@ Additionally, this view highlights techniques used in the plan that do not map t
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/7.png)
 
-**Search View**, this view is meant to provide a search fucntionality through all content (plans, tests, tags, and the rest of the associated meta-data) in addition to ATT&CK™ framework and Atomic™ Tests.
+**Search View**, this view is meant to provide a search functionality through all content (plans, tests, tags, and the rest of the associated meta-data) in addition to ATT&CK™ framework and Atomic™ Tests.
 
-The *“View...”* action depends on the content type, if it is part of the plans, it will show up in it’s own plan or test editor. If the content is related to ATT&CK™ or Atomic™ frameworks, it will point the default web browser to the related external URL.
+The *“View...”* action depends on the content type, if it is part of a plan or test, it will show up in it’s own editor. If the content is related to ATT&CK™ or Atomic™ frameworks, it will point the default web browser to the related external URL.
 
-The search also highlights where the content was found, for example, in a test *“implementation”* field, or ATT&CK™ Technique *“description”*, etc., to make it easier to jump quickly to the desired source, the search view can be grouped and re-arranged in the form of a pivot table (the second screenshot)
+The search also highlights where the content was found, for example, in a test *“implementation”* field, or ATT&CK™ Technique *“description”*, etc., to make it easier to jump quickly to the desired source, the search view can be grouped and re-arranged in the form of a pivot table (the second screen shot)
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/8.png)
 
@@ -90,7 +90,11 @@ The following is a conceptual model that can be implemented using any database t
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/ATTACKDataModel-1.png)
 
 # Accessing ATT&amp;CK™ Data with SQL
-To have a better understanding about the database structure, following is  a list of sample SQL queries used to read ATT&amp;CK™. (There are many SQLite management tools, free and paid, runs on Windows, macOS Linux and can be used to access the database content and run SQL queries to extract the data).
+There are many use cases for ATT&CK™ framework, many of which depend on existing tools being ATT&CK™-enabled, to make this process easier, the database in this repository can help in getting up to speed with integrating existing tools with ATT&CK™, build your own tooling or fuse the framework with other frameworks.
+
+The database is based on SQLite for simplicity and portability, however, it is better to think of terms of a data model instead of the underlying technology used in implementation, this is very important to enable exploring other useful models and applications and then narrow down to technology.
+
+To have a better understanding about the database structure, following is  a list of sample SQL queries used to read ATT&amp;CK™. (There are many SQLite management tools out there, free and paid, runs on Windows, macOS Linux and can be used to access the database content and run SQL queries).
 
 *Some output truncated for brevity*
 
@@ -233,7 +237,7 @@ WHERE type IS "intrusion-set";
 
 ### List all Tools and Malware used by a certain Adversary
 
-All STIX 2.0 Domain Objects (SDO) relations are stored in *"relatioship"* table. The following query is a nested query used to get the tools/malware used by APT3:
+All STIX 2.0 Domain Objects (SDO) relations are stored in *"relationship"* table. The following query is a nested query used to get the tools/malware used by APT3:
 
 **SQL**
 
