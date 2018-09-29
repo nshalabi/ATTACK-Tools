@@ -38,7 +38,7 @@ Following is a description to the various UI elements.
 options):
 
 -   Export plan diagram to a bitmap image
--   Export the currently loaded (active) plan techniques to MITRE™ Navigator, this option allows exporting a second plan techniques alongside the currently loaded plan.
+-   Export the currently loaded (active) plan techniques to MITRE™ Navigator, this option allows exporting a second plan techniques alongside the currently loaded plan for comparison.
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/MainView2.png)
 
