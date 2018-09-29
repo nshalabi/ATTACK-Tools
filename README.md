@@ -50,7 +50,7 @@ options):
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/9.png)
 
-**Test Editor**, the Test Editor allows for mapping tests to ATT&CK™ Techniques, color-mark and tag tests, select a testing framework (for example, cobalt-strike, metasplit or built-in OS tools/commands, additionally, custom frameworks can be added), lookup **Atomic™ Red Team** Tests (https://atomicredteam.io) in addition to other meta-data (test results, lessons learned, captured IOC's, etc.).
+**Test Editor**, the Test Editor allows for mapping tests to ATT&CK™ Techniques, color-mark and tag tests, select a testing framework (for example, cobalt-strike, metasploit or built-in OS tools/commands, additionally, custom frameworks can be added), lookup **Atomic™ Red Team** Tests (https://atomicredteam.io) in addition to other meta-data (test results, lessons learned, captured IOC's, etc.).
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/2.png)
 
