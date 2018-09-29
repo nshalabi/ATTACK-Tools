@@ -27,19 +27,18 @@ This repository contains the following:
 
 # Overview
 
-ATT&CK™ View is planning tool that help defenders in designing adversary
-emulation plans based on MITRE™ ATT&CK™ framework. ATT&CK™ View comes bundled
+ATT&CK™ View is a planning tool that help defenders in designing an adversary
+emulation plans based on MITRE™ ATT&CK™ framework in a structured approach. As a demonstration, ATT&CK™ View comes bundled
 with a full adversary emulation plan for **APT3** developed by MITRE™ (SOURCE :
 https://attack.mitre.org/wiki/Adversary_Emulation_Plans).
 
 Following is a description to the various UI elements.
 
-**Planner View**, in this view, plans and tests
-can be created, edited, copied or deleted, there are also options available to export tests (check “Spreadsheet View” for other export
+**Planner View**, in this view, plans and tests can be created, edited, copied or deleted, there are also options available to export tests (check “Spreadsheet View” for other export
 options):
 
--   Export the diagram to a bitmap image
--   Export the currently loaded (active) plan techniques to MITRE™ Navigator, this option also allows exporting a second plan techniques for comparison with the currently active plan, check the next screenshot.
+-   Export plan diagram to a bitmap image
+-   Export the currently loaded (active) plan techniques to MITRE™ Navigator, this option allows exporting a second plan techniques alongside the currently loaded plan.
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/MainView2.png)
 
@@ -51,15 +50,11 @@ options):
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/9.png)
 
-**Test Editor**, the Test Editor allows for mapping tests to ATT&CK™ Techniques,
-Colorize and Tag tests, select a framework (custom frameworks can be added too), lookup **Atomic™ Red Team** Tests (https://atomicredteam.io, the small “A” button will turn red) and other tests meta-data.
+**Test Editor**, the Test Editor allows for mapping tests to ATT&CK™ Techniques, color-mark and tag tests, select a testing framework (for example, cobalt-strike, metasplit or built-in OS tools/commands, additionally, custom frameworks can be added), lookup **Atomic™ Red Team** Tests (https://atomicredteam.io) in addition to other meta-data (test results, lessons learned, captured IOC's, etc.).
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/2.png)
 
-**Spreadsheet View**, this view lists all tests according to their order (check
-planner to know how to arrange and order tests), this view can be exported to
-**Excel** and **HTML** formats, which fields to be exported can also be
-specified
+**Spreadsheet View**, this view lists all tests according to their order, this view can be exported to **Excel** and **HTML** formats. The fields to be exported can be specified too.
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/6.png)
 
@@ -71,18 +66,16 @@ specified
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/10.png)
 
-**Coverage View**, this view helps in highlighting the plan coverage in relation to a certain adversary (group) techniques, by showing the techniques that have not been planned for in the last list labeled *“Techniques not in Plan"*, this list can be used to quickly add those techniques to the plan too. This view also highlights techniques used in the plan that do not map to the adversary emulation under testing (the list in the middle, the techniques are colored differently)
+**Coverage View**, this view helps in highlighting the plan coverage in relation to a certain adversary (group) techniques, by showing the  techniques that have not been planned for (this is the list labeled *“Techniques not in Plan"*, this list can also be used to quickly add those techniques to the plan).
+Additionally, this view highlights techniques used in the plan that do not map to the adversary under emulation (this is the list in the middle, the techniques are highlighted with a different color)
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/7.png)
 
-**Search View**, this view is meant to provide a free search through all plans
-content (plans, tests, tags, and the rest of the associated meta-data) in
-addition to ATT&CK™ framework and Atomic™ Tests.
+**Search View**, this view is meant to provide a search fucntionality through all content (plans, tests, tags, and the rest of the associated meta-data) in addition to ATT&CK™ framework and Atomic™ Tests.
 
-The *“View...”* action depends on the content type, if it is part of the plans, it will show up in it’s own editor. If the content is related to
-ATT&CK™ or Atomic™ frameworks, it will point the default web browser to the related external URL.
+The *“View...”* action depends on the content type, if it is part of the plans, it will show up in it’s own plan or test editor. If the content is related to ATT&CK™ or Atomic™ frameworks, it will point the default web browser to the related external URL.
 
-The search also highlights where the content source (data fields), for example, a test *“implementation”* field, a Technique *“description”*, etc., to make it easier to get to the source of desired data, the search view can be grouped and re-arranged as in the second screenshot
+The search also highlights where the content was found, for example, in a test *“implementation”* field, or ATT&CK™ Technique *“description”*, etc., to make it easier to jump quickly to the desired source, the search view can be grouped and re-arranged in the form of a pivot table (the second screenshot)
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/8.png)
 
@@ -92,8 +85,7 @@ The search also highlights where the content source (data fields), for example, 
 
 # The ATT&CK™ Data Model
 
-The following is a conceptual model that can be implemented using any database
-technology (The *attack_view_db_structure.sql* is a good starting point).
+The following is a conceptual model that can be implemented using any database technology (The *attack_view_db_structure.sql* is a good starting point).
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/ATTACKDataModel-1.png)
 
