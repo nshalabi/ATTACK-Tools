@@ -85,14 +85,15 @@ The search also highlights where the content was found, for example, in a test *
 
 # The ATT&CK™ Data Model
 
+There are many use cases for ATT&CK™ framework, many of which depend on existing tools being ATT&CK™-enabled, to make this process easier, the database in this repository can help in getting up to speed with integrating existing tools with ATT&CK™, build your own tooling or fuse ATT&CK™ with other existing frameworks.
+
+The database is based on SQLite for simplicity and portability, however, it is better to think of terms of a data model instead of the underlying technology used in implementation, this is very important, as it enables exploring other useful models and applications and then narrow down to technology.
+
 The following is a conceptual model that can be implemented using any database technology (The *attack_view_db_structure.sql* is a good starting point).
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/ATTACKDataModel-1.png)
 
 # Accessing ATT&amp;CK™ Data with SQL
-There are many use cases for ATT&CK™ framework, many of which depend on existing tools being ATT&CK™-enabled, to make this process easier, the database in this repository can help in getting up to speed with integrating existing tools with ATT&CK™, build your own tooling or fuse ATT&CK™ with other existing frameworks.
-
-The database is based on SQLite for simplicity and portability, however, it is better to think of terms of a data model instead of the underlying technology used in implementation, this is very important, as it enables exploring other useful models and applications and then narrow down to technology.
 
 To have a better understanding about the database structure, following is  a list of sample SQL queries used to read ATT&amp;CK™. To run the following SQL queries, you will need a SQLite management tool, there are many free and paid tools available supporting Windows, macOS and Linux (https://www.sqlite.org/cvstrac/wiki?p=ManagementTools)
 
