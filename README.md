@@ -3,9 +3,7 @@
 
 This repository contains the following:
 
--   **ATT&CK™ Data Model:** a relational data model for ATT&CK™ and STIX™
-    (SQLite for simplicity and portability, support for other relational
-    databases is under development).
+-   **ATT&CK™ Data Model:** a relational data model for ATT&CK™ and STIX™.
 -   **ATT&CK™ View:** an adversary emulation planning tool.
 
 # Content
@@ -20,8 +18,8 @@ This repository contains the following:
 -   Password of archives is **password**
 -   There are 32 and 64-bit builds (32.zip and 64.zip)
 -   ATT&CK™ View database is bundled within the same archive (32.zip and 64.zip) and must be located at same location as the executable
--   All executables are **digitally signed**
 -   ATT&CK™ View **IS FREE**
+-   All executables are **digitally signed**
 -   All executables are **packed using Themida**
     (https://www.oreans.com/themida.php)
 
@@ -50,7 +48,7 @@ options):
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/9.png)
 
-**Test Editor**, the Test Editor allows for mapping tests to ATT&CK™ Techniques, color-mark and tag tests, select a testing framework (for example, cobalt-strike, metasploit or built-in OS tools/commands, additionally, custom frameworks can be added), lookup **Atomic™ Red Team** Tests (https://atomicredteam.io) in addition to other meta-data (test results, lessons learned, captured IOC's, etc.).
+**Test Editor**, the Test Editor allows for mapping tests to ATT&CK™ Techniques, color-mark and tag tests, select a testing framework (for example, cobalt-strike, metasploit or built-in OS tools/commands, additionally, custom frameworks can be added), lookup **ATOMIC™ Red Team** Tests (https://atomicredteam.io) in addition to other meta-data (test results, lessons learned, captured IOC's, etc.).
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/2.png)
 
@@ -71,9 +69,9 @@ Additionally, this view highlights techniques used in the plan that do not map t
 
 ![](https://nosecurecode.blog/wp-content/uploads/2018/09/7.png)
 
-**Search View**, this view is meant to provide a search functionality through all content (plans, tests, tags, and the rest of the associated meta-data) in addition to ATT&CK™ framework and Atomic™ Tests.
+**Search View**, this view is meant to provide a search functionality through all content (plans, tests, tags, and the rest of the associated meta-data) in addition to ATT&CK™ framework and ATOMIC™ Tests.
 
-The *“View...”* action depends on the content type, if it is part of a plan or test, it will show up in it’s own editor. If the content is related to ATT&CK™ or Atomic™ frameworks, it will point the default web browser to the related external URL.
+The *“View...”* action depends on the content type, if it is part of a plan or test, it will show up in it’s own editor. If the content is related to ATT&CK™ or ATOMIC™ frameworks, it will point the default web browser to the related external URL.
 
 The search also highlights where the content was found, for example, in a test *“implementation”* field, or ATT&CK™ Technique *“description”*, etc., to make it easier to jump quickly to the desired source, the search view can be grouped and re-arranged in the form of a pivot table (the second screen shot)
 
@@ -265,12 +263,12 @@ WHERE (type IS "malware" OR type IS "tool") -- Query for tools or malware
 <tr><td colspan="2">...</td></tr>
 </table>
 
-### Get an ATOMIC™ test(s) associated with ATT&CK™ technique
+### Get ATOMIC™ test(s) associated with an ATT&CK™ technique
 
 ATOMIC™ Tests are stored in three tables
-- atomic_test table, this table simply maps ATOMIC™ to ATT&CK™, for example, each atomic_test record has one or more atomic_attack_test records (the actual tests)
-- atomic_attack_test, this tables holds the actual ATOMIC™ tests, each test has one or more input arguments represented with atomic_input_arguments
-- atomic_input_arguments, holds tests input arguments
+- atomic_test table, this table simply maps ATOMIC™ tests to ATT&CK™ techniques. Each atomic_test record has one or more atomic_attack_test records that contains the actual test details
+- atomic_attack_test, this tables holds the actual ATOMIC™ test details, each test has one or more input arguments represented with an atomic_input_arguments record
+- atomic_input_arguments, holds tests input arguments details
 
 The following SQL statement retrieves the ATOMIC™ test(s) associated with ATT&CK™ technique "T1031"
 
