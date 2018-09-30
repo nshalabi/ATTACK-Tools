@@ -12,6 +12,7 @@ This repository contains the following:
 -   Overview
 -   The ATT&CK™ Data Model
 -   Accessing ATT&CK™ Data with SQL
+-   License
 
 # Release Notes
 
