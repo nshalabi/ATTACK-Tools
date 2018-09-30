@@ -16,13 +16,10 @@ This repository contains the following:
 
 # Release Notes
 
--   Password of archives is **password**
 -   There are 32 and 64-bit builds (32.zip and 64.zip)
 -   ATT&CK™ View database is bundled within the same archive (32.zip and 64.zip) and must be located at same location as the executable
--   ATT&CK™ View **IS FREE**
 -   All executables are **digitally signed**
--   All executables are **packed using Themida**
-    (https://www.oreans.com/themida.php)
+-   ATT&CK™ View **IS FREE**
 
 # Overview
 
