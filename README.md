@@ -289,7 +289,7 @@ FROM atomic_attack_test
 <tr><th>name</th><th>description</th><th>executor_name</th><th>executor_command</th></tr>
 <tr><td>Modify Fax service to run PowerShell</td><td>This test will temporarily modify the service Fax by changing the binPath to PowerShell<br/>and will then revert the binPath change, restoring Fax to its original state.</td><td>command_prompt</td><td>sc config Fax binPath= &quot;C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe -noexit -c \&quot;write-host &#39;T1031 Test&#39;\&quot;&quot;<br/>sc start Fax<br/>sc config Fax binPath= &quot;C:\WINDOWS\system32\fxssvc.exe&quot;</td></tr></table>
 
-## License
+# License
 
 ```
 Copyright 2018 Nader Shalabi. All rights reserved. 
