@@ -288,3 +288,29 @@ FROM atomic_attack_test
 <tr><th>name</th><th>description</th><th>executor_name</th><th>executor_command</th></tr>
 <tr><td>Modify Fax service to run PowerShell</td><td>This test will temporarily modify the service Fax by changing the binPath to PowerShell<br/>and will then revert the binPath change, restoring Fax to its original state.</td><td>command_prompt</td><td>sc config Fax binPath= &quot;C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe -noexit -c \&quot;write-host &#39;T1031 Test&#39;\&quot;&quot;<br/>sc start Fax<br/>sc config Fax binPath= &quot;C:\WINDOWS\system32\fxssvc.exe&quot;</td></tr></table>
 
+## License
+
+```
+Copyright 2018 Nader Shalabi. All rights reserved. 
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met: 
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and
+   the following disclaimer. 
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+   and the following disclaimer in the documentation and/or other materials provided with the 
+   distribution. 
+
+THIS SOFTWARE IS PROVIDED BY NADER SHALABI ''AS IS'' AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL NADER SHALABI
+OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The views and conclusions contained in the software and documentation are those of the authors and
+should not be interpreted as representing official policies, either expressed or implied, of Nader Shalabi.
+```
