@@ -6,6 +6,8 @@ This repository contains the following:
 -   **ATT&CK™ Data Model:** a relational data model for ATT&CK™ and STIX™.
 -   **ATT&CK™ View:** an adversary emulation planning tool.
 
+More about the toolset design/use cases can be found here: https://nosecurecode.blog/2018/08/31/attck-stix-a-data-model-and-attck-tools/
+
 # Content
 
 -   Release Notes
