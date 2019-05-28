@@ -3,7 +3,7 @@
 
 This repository contains the following:
 
--   **ATT&CK™ Data Model:** a relational data model for ATT&CK™ and STIX™.
+-   **ATT&CK™ Data Model:** a relational data model for ATT&CK™.
 -   **ATT&CK™ View:** an adversary emulation planning tool.
 
 # Content
@@ -17,9 +17,9 @@ This repository contains the following:
 # Release Notes
 
 -   There are 32 and 64-bit builds (32.zip and 64.zip)
--   ATT&CK™ View database is bundled within the same archive (32.zip and 64.zip) and must be located at same location as the executable
--   All executables are **digitally signed**
--   ATT&CK™ View **IS FREE**
+-   **attack_view_db.sqlite** is a SQLite database for ATT&CK™
+-   **attack_view_db_structure** and **attack_view_db_data** are SQL scripts used to build the SQLite database
+-   **enterprise-attack.xml** is an XML version of MITRE™ ATT&CK™ JSON
 
 # Overview
 
@@ -28,56 +28,8 @@ emulation plans based on MITRE™ ATT&CK™ framework in a structured approach. 
 with a full adversary emulation plan for **APT3** developed by MITRE™ (SOURCE :
 https://attack.mitre.org/wiki/Adversary_Emulation_Plans).
 
-Following is a description to the various UI elements.
 
-**Planner View**, in this view, plans and tests can be created, edited, copied or deleted, there are also options available to export tests (check “Spreadsheet View” for other export
-options):
-
--   Export plan diagram to a bitmap image
--   Export the currently loaded (active) plan techniques to MITRE™ Navigator, this option allows exporting a second plan techniques alongside the currently loaded plan for comparison.
-
-![](https://nosecurecode.com/wp-content/uploads/2018/09/MainView2.png)
-
-> Navigator Export Options
-
-![](https://nosecurecode.com/wp-content/uploads/2018/09/4.png)
-
-> Exported Plan with Comparison
-
-![](https://nosecurecode.com/wp-content/uploads/2018/09/9.png)
-
-**Test Editor**, the Test Editor allows for mapping tests to ATT&CK™ Techniques, color-mark and tag tests, select a testing framework (for example, cobalt-strike, metasploit or built-in OS tools/commands, additionally, custom frameworks can be added), lookup **ATOMIC™ Red Team** Tests (https://atomicredteam.io) in addition to other meta-data (test results, lessons learned, captured IOC's, etc.).
-
-![](https://nosecurecode.com/wp-content/uploads/2018/09/2.png)
-
-**Spreadsheet View**, this view lists all tests according to their order, this view can be exported to **Excel** and **HTML** formats. The fields to be exported can be specified too.
-
-![](https://nosecurecode.com/wp-content/uploads/2018/09/6.png)
-
-> Plan Exported to Excel
-
-![](https://nosecurecode.com/wp-content/uploads/2018/09/11.png)
-
-> Plan Exported to HTML
-
-![](https://nosecurecode.com/wp-content/uploads/2018/09/10.png)
-
-**Coverage View**, this view helps in highlighting the plan coverage in relation to a certain adversary (group) techniques, by showing the  techniques that have not been planned for (this is the list labeled *“Techniques not in Plan"*, this list can also be used to quickly add missing techniques to the plan).
-Additionally, this view highlights techniques used in the plan that do not map to the adversary under emulation (this is the list in the middle, the techniques are highlighted with a different color)
-
-![](https://nosecurecode.com/wp-content/uploads/2018/09/7.png)
-
-**Search View**, this view is meant to provide a search functionality through all content (plans, tests, tags, and the rest of the associated meta-data) in addition to ATT&CK™ framework and ATOMIC™ Tests.
-
-The *“View...”* action depends on the content type, if it is part of a plan or test, it will show up in it’s own editor. If the content is related to ATT&CK™ or ATOMIC™ frameworks, it will point the default web browser to the related external URL.
-
-The search also highlights where the content was found, for example, in a test *“implementation”* field, or ATT&CK™ Technique *“description”*, etc., to make it easier to jump quickly to the desired source, the search view can be grouped and re-arranged in the form of a pivot table (the second screen shot)
-
-![](https://nosecurecode.com/wp-content/uploads/2018/09/8.png)
-
-> Organized Search View
-
-![](https://nosecurecode.com/wp-content/uploads/2018/09/8_1.png)
+![](https://github.com/nshalabi/ATTACK-Tools/blob/master/ci/attack_view.png)
 
 # The ATT&CK™ Data Model
 
