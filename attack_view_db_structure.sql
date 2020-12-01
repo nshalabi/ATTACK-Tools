@@ -208,7 +208,9 @@ create table sdos_object
 	x_mitre_system_requirements VARCHAR,
 	x_mitre_remote_support VARCHAR,
 	x_mitre_network_requirements VARCHAR,
-	x_mitre_detection VARCHAR
+	x_mitre_detection VARCHAR,
+	x_mitre_version VARCHAR,
+	x_mitre_is_subtechnique VARCHAR
 );
 
 create table sdos_object_platforms
