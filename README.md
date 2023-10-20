@@ -40,7 +40,7 @@ The database is based on SQLite for simplicity and portability, however, it is b
 
 The following is a conceptual model that can be implemented using any database technology (The *attack_view_db_structure.sql* is a good starting point).
 
-![](https://nosecurecode.com/wp-content/uploads/2018/09/ATTACKDataModel-1.png)
+![](https://nosecurecode.files.wordpress.com/2022/02/61978-attackdatamodel.png)
 
 # Accessing ATT&amp;CK™ Data with SQL
 
