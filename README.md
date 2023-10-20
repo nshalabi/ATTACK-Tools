@@ -241,7 +241,7 @@ FROM atomic_attack_test
 
 # Additional Resources
 
-* [Research Automation with ATT&CK & Python](https://www.lacework.com/automation-attck-python/)
+* [Research Automation with ATT&CK & Python](https://www.lacework.com/blog/automation-attck-python/)
 
 * [MITRE ATT&CK™ : de l’importance de la temporalité](https://medium.com/cyberthreatintel/mitre-att-ck-de-limportance-de-la-temporalité-787fa81a024f)
 
