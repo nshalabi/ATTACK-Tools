@@ -1,5 +1,5 @@
 # ATT&CK™-Tools
-## www.cyber-distance.com
+### www.cyber-distance.com
 ### Utilities for MITRE™ ATT&CK™
 
 This repository contains the following:
@@ -248,7 +248,7 @@ FROM atomic_attack_test
 
 # Support and addtional Features
 
-For support and to report and issues, you may either file an issue at Github or email directly to [nshalabi@cyber-distance.com(mailto:nshalabi@cyber-distance.com)]
+For support and to report and issues, you may either file an issue at Github or email directly to nshalabi@cyber-distance.com
 
 # License
 
