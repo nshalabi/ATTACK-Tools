@@ -1,4 +1,5 @@
 # ATT&CK™-Tools
+## www.cyber-distance.com
 ### Utilities for MITRE™ ATT&CK™
 
 This repository contains the following:
@@ -17,10 +18,10 @@ This repository contains the following:
 
 # Release Notes
 
--   There are 32 and 64-bit builds (32.zip and 64.zip)
--   **attack_view_db.sqlite** is a SQLite database for ATT&CK™
--   **attack_view_db_structure** and **attack_view_db_data** are SQL scripts used to build the SQLite database
+-   **attack_view_db_structure** and **attack_view_db_data** SQL script used to build the SQLite database structure
 -   **enterprise-attack.xml** is an XML version of MITRE™ ATT&CK™ JSON
+-   **ics-attack.xml** is an XML version of MITRE™ ICS ATT&CK™ JSON
+-   **mobile-attack.xml** is an XML version of MITRE™ Mobile ATT&CK™ JSON
 
 # Overview
 
@@ -245,10 +246,14 @@ FROM atomic_attack_test
 
 * [MITRE ATT&CK™ : de l’importance de la temporalité](https://medium.com/cyberthreatintel/mitre-att-ck-de-limportance-de-la-temporalité-787fa81a024f)
 
+# Support and addtional Features
+
+For support and to report and issues, you may either file an issue at Github or email directly to [nshalabi@cyber-distance.com(mailto:nshalabi@cyber-distance.com)]
+
 # License
 
 ```
-Copyright 2018 Nader Shallabi. All rights reserved. 
+Copyright 2024 Nader Shallabi. All rights reserved. 
 
 ATT&CK™ TOOLS CAN BE COPIED AND/OR DISTRIBUTED WITHOUT ANY EXPRESS PERMISSION OF NADER SHALLABI.
 
