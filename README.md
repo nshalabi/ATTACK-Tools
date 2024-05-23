@@ -1,5 +1,5 @@
 # ATT&CK™-Tools
-### www.cyber-distance.com
+<sup> Looking for bsuiness partners, please visit www.cyber-distance.com for more information </sup>
 ### Utilities for MITRE™ ATT&CK™
 
 This repository contains the following:
