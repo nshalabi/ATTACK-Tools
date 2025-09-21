@@ -1,61 +1,77 @@
-# ATT&CK™-Tools
-<sup> Looking for bsuiness partners, please visit www.cyber-distance.com for more information </sup>
-### Utilities for MITRE™ ATT&CK™
+# ATT&CK™ Tools 🛡️
 
-This repository contains the following:
+[![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
+![GitHub last commit](https://img.shields.io/github/last-commit/nshalabi/ATTACK-Tools)
+![GitHub stars](https://img.shields.io/github/stars/nshalabi/ATTACK-Tools?style=social)
 
--   **ATT&CK™ Data Model:** a relational data model for ATT&CK™.
--   **ATT&CK™ View:** an adversary emulation planning tool.
+Utilities for working with the **MITRE™ ATT&CK™ framework**, including a relational data model and an adversary emulation planning tool.
 
-# Content
+---
 
--   Release Notes
--   Overview
--   The ATT&CK™ Data Model
--   Accessing ATT&CK™ Data with SQL
--   Additional Resources
--   License
+### Repository Content
 
-# Release Notes
+- **ATT&CK™ Data Model** – relational schema for representing MITRE™ ATT&CK data, enriched with Red Canary ATOMIC™ tests
+- **ATT&CK™ View** – adversary emulation planning tooleee.
 
--   **attack_view_db_structure** and **attack_view_db_data** SQL script used to build the SQLite database structure
--   **enterprise-attack.xml** is an XML version of MITRE™ ATT&CK™ JSON
--   **ics-attack.xml** is an XML version of MITRE™ ICS ATT&CK™ JSON
--   **mobile-attack.xml** is an XML version of MITRE™ Mobile ATT&CK™ JSON
+---
 
-# Overview
+# 📑 Content
 
-ATT&CK™ View is a planning tool that help defenders in designing an adversary
-emulation plans based on MITRE™ ATT&CK™ framework in a structured approach. As a demonstration, ATT&CK™ View comes bundled
-with a full adversary emulation plan for **APT3** developed by MITRE™ (SOURCE :
-https://attack.mitre.org/wiki/Adversary_Emulation_Plans).
+- [Release Notes](#release-notes)
+- [Overview](#overview)
+- [The ATT&CK™ Data Model](#the-attck-data-model)
+- [Accessing ATT&CK™ Data with SQL](#accessing-attck-data-with-sql)
+- [Additional Resources](#additional-resources)
+- [Support](#support)
+- [License](#license)
+- [Contact](#contact)
 
+---
 
-![](https://github.com/nshalabi/ATTACK-Tools/blob/master/ci/attack_view.png)
+# 📝 Release Notes
 
-# The ATT&CK™ Data Model
+- **attack_view_db_structure.sql** and **attack_view_db_data.sql** – scripts to build SQLite database structure and load data.
+- **enterprise-attack.xml** – XML version of MITRE™ ATT&CK™ JSON.
+- **ics-attack.xml** – XML version of MITRE™ ICS ATT&CK™ JSON.
+- **mobile-attack.xml** – XML version of MITRE™ Mobile ATT&CK™ JSON.
 
-There are many use cases for ATT&CK™ framework, many of which depend on existing tools being ATT&CK™-enabled, to make this process easier, the database in this repository can help in getting up to speed with integrating existing tools with ATT&CK™, build your own tooling or fuse ATT&CK™ with other existing frameworks.
+---
 
-The database is based on SQLite for simplicity and portability, however, it is better to think of terms of a data model instead of the underlying technology used in implementation, this is very important, as it enables exploring other useful models and applications and then narrow down to technology.
+# 🔎 Overview
 
-The following is a conceptual model that can be implemented using any database technology (The *attack_view_db_structure.sql* is a good starting point).
+**ATT&CK™ View** is a planning tool to help defenders design adversary emulation plans using the MITRE™ ATT&CK™ framework.  
+It provides a structured approach and comes bundled with a full adversary emulation plan for **APT3** (developed by MITRE™). It also serves as an example usage of teh relational data model and how to enrich teh model (extend) with additonal data such as Red Canary ATOMIC™ tests.
 
-![](https://nosecurecode.files.wordpress.com/2022/02/61978-attackdatamodel.png)
+(Source: [MITRE Adversary Emulation Plans](https://attack.mitre.org/wiki/Adversary_Emulation_Plans))
 
-# Accessing ATT&amp;CK™ Data with SQL
+![ATT&CK View](https://github.com/nshalabi/ATTACK-Tools/blob/master/ci/attack_view.png)
 
-To have a better understanding about the database structure, following is  a list of sample SQL queries used to read ATT&amp;CK™. To run the following SQL queries, you will need a SQLite management tool, there are many free and paid tools available supporting Windows, macOS and Linux (https://www.sqlite.org/cvstrac/wiki?p=ManagementTools)
+---
 
-*Some output truncated for brevity*
+# 🗂 The ATT&CK™ Data Model
 
-### Get the list of ATT&amp;CK™ techniques
+The ATT&CK™ framework is widely used, but many use cases require ATT&CK-enabled tools.  
+This repository provides a relational database (SQLite) to simplify integration and enable building custom tools or fusing ATT&CK with other frameworks.
 
-**SQL**
+> Think in terms of a **data model** instead of the underlying database technology — the schema can be adapted to any DBMS.
 
-`SELECT name
+Example conceptual model (can be implemented in any RDBMS):  
+![ATT&CK Data Model](https://nosecurecode.files.wordpress.com/2022/02/61978-attackdatamodel.png)
+
+---
+
+# 💻 Accessing ATT&CK™ Data with SQL
+
+Below are sample SQL queries for exploring the ATT&CK™ database.  
+To run them, use any SQLite management tool (see [SQLite Management Tools](https://www.sqlite.org/cvstrac/wiki?p=ManagementTools)).
+
+### Get the list of ATT&CK™ techniques
+
+```sql
+SELECT name
 FROM sdos_object
-WHERE type IS "attack-pattern";`
+WHERE type IS "attack-pattern";
+```
 
 **OUTPUT**
 
@@ -68,13 +84,13 @@ WHERE type IS "attack-pattern";`
 <tr><td>Account Manipulation</td></tr>
 <tr><td>...</td></tr></table>
 
-### Get the list of ATT&amp;CK™ techniques names with their STIX 2.0 identifier
+### Get techniques with their STIX 2.0 identifier
 
-**SQL**
-
-`SELECT id, name
+```sql
+SELECT id, name
 FROM sdos_object
-WHERE type IS "attack-pattern";`
+WHERE type IS "attack-pattern";
+```
 
 **OUTPUT**
 
@@ -88,22 +104,18 @@ WHERE type IS "attack-pattern";`
 <tr><td colspan="2">...</td></tr>
 </table>
 
-*The* **id** *field is a unique key that will be used frequently in many SQL queries*
+_The_ **id** _field is a unique key that will be used frequently in many SQL queries_
 
 The external references are stored in external_references table, since one ATT&amp;CK™ technique can have one or more references, the link between the two tables is the technique identifier (check previous query), I will list multiple ways to access the external references
 
-### Get the list of ATT&amp;CK™ techniques with external names
+### Get techniques with MITRE external IDs
 
-**SQL**
-
-```
+```sql
 SELECT name, external_id
-FROM sdos_object INNER JOIN external_references ON 
-     sdos_object.id = external_references.fk_object_id
-WHERE 
-  sdos_object.type IS "attack-pattern"
-  AND 
-  external_references.source_name IS "mitre-attack";
+FROM sdos_object INNER JOIN external_references
+  ON sdos_object.id = external_references.fk_object_id
+WHERE sdos_object.type IS "attack-pattern"
+  AND external_references.source_name IS "mitre-attack";
 ```
 
 **OUTPUT**
@@ -118,18 +130,15 @@ WHERE
 <tr><td colspan="2">...</td></tr>
 </table>
 
-### List all ATT&amp;CK™ techniques associated with "Windows" platform 
+### List techniques associated with Windows platform
 
-**SQL**
-
-```
+```sql
 SELECT name, external_id
-FROM sdos_object INNER JOIN external_references ON
-     sdos_object.id = external_references.fk_object_id
-WHERE 
-  sdos_object.type IS "attack-pattern" AND 
-  x_mitre_platforms_windows IS "true" AND 
-  external_references.source_name IS "mitre-attack";
+FROM sdos_object INNER JOIN external_references
+  ON sdos_object.id = external_references.fk_object_id
+WHERE sdos_object.type IS "attack-pattern"
+  AND x_mitre_platforms_windows IS "true"
+  AND external_references.source_name IS "mitre-attack";
 ```
 
 **OUTPUT**
@@ -144,12 +153,11 @@ WHERE
 <tr><td colspan="2">...</td></tr>
 </table>
 
-### List all Malware objects along with their description
+### List all Malware objects
 
-**SQL**
-
-```
-SELECT name, description FROM sdos_object 
+```sql
+SELECT name, description
+FROM sdos_object
 WHERE type IS "malware";
 ```
 
@@ -165,12 +173,11 @@ WHERE type IS "malware";
 <tr><td colspan="2">...</td></tr>
 </table>
 
-### List all Adversaries (intrusion-sets) along with their description
+### List all Adversaries (intrusion-sets)
 
-**SQL**
-
-```
-SELECT name, description FROM sdos_object 
+```sql
+SELECT name, description
+FROM sdos_object
 WHERE type IS "intrusion-set";
 ```
 
@@ -186,21 +193,18 @@ WHERE type IS "intrusion-set";
 <tr><td colspan="2">...</td></tr>
 </table>
 
-### List all Tools and Malware used by a certain Adversary
+### List all Tools and Malware used by APT3
 
-All STIX 2.0 Domain Objects (SDO) relations are stored in *"relationship"* table. The following query is a nested query used to get the tools/malware used by APT3:
+All STIX 2.0 Domain Objects (SDO) relations are stored in _"relationship"_ table. The following query is a nested query used to get the tools/malware used by APT3:
 
-**SQL**
-
-```
+```sql
 SELECT name, description
 FROM sdos_object
-WHERE (type IS "malware" OR type IS "tool") -- Query for tools or malware
-  AND id IN (SELECT target_ref -- filter tools/malware associated with APT3
+WHERE (type IS "malware" OR type IS "tool")
+  AND id IN (SELECT target_ref
              FROM relationship
-             WHERE relationship_type IS "uses" -- Source "uses" Target
-               AND source_ref IS -- Source is APT3 identifier
-                   "intrusion-set--0bbdf25b-30ff-4894-a1cd-49260d0dd2d9");
+             WHERE relationship_type IS "uses"
+               AND source_ref IS "intrusion-set--0bbdf25b-30ff-4894-a1cd-49260d0dd2d9");
 ```
 
 **OUTPUT**
@@ -215,23 +219,22 @@ WHERE (type IS "malware" OR type IS "tool") -- Query for tools or malware
 <tr><td colspan="2">...</td></tr>
 </table>
 
-### Get ATOMIC™ test(s) associated with an ATT&CK™ technique
+### Get ATOMIC™ test(s) for an ATT&CK™ technique (e.g., T1031)
 
 ATOMIC™ Tests are stored in three tables
+
 - atomic_test table, this table simply maps ATOMIC™ tests to ATT&CK™ techniques. Each atomic_test record has one or more atomic_attack_test records that contains the actual test details
 - atomic_attack_test, this tables holds the actual ATOMIC™ test details, each test has one or more input arguments represented with an atomic_input_arguments record
 - atomic_input_arguments, holds tests input arguments details
 
 The following SQL statement retrieves the ATOMIC™ test(s) associated with ATT&CK™ technique "T1031"
 
-**SQL**
-
-```
+```sql
 SELECT name, description, executor_name, executor_command
 FROM atomic_attack_test
-  WHERE fk_atomic_attack_id IN 
-    (SELECT id FROM atomic_attack 
-     WHERE fk_attack_external_id IS "T1031");
+WHERE fk_atomic_attack_id IN
+  (SELECT id FROM atomic_attack
+   WHERE fk_attack_external_id IS "T1031");
 ```
 
 **OUTPUT**
@@ -240,24 +243,32 @@ FROM atomic_attack_test
 <tr><th>name</th><th>description</th><th>executor_name</th><th>executor_command</th></tr>
 <tr><td>Modify Fax service to run PowerShell</td><td>This test will temporarily modify the service Fax by changing the binPath to PowerShell<br/>and will then revert the binPath change, restoring Fax to its original state.</td><td>command_prompt</td><td>sc config Fax binPath= &quot;C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe -noexit -c \&quot;write-host &#39;T1031 Test&#39;\&quot;&quot;<br/>sc start Fax<br/>sc config Fax binPath= &quot;C:\WINDOWS\system32\fxssvc.exe&quot;</td></tr></table>
 
-# Additional Resources
+---
 
-* [Research Automation with ATT&CK & Python](https://www.lacework.com/blog/automation-attck-python/)
+# 📚 Additional Resources
 
-* [MITRE ATT&CK™ : de l’importance de la temporalité](https://medium.com/cyberthreatintel/mitre-att-ck-de-limportance-de-la-temporalité-787fa81a024f)
+- [MITRE ATT&CK™ : de l’importance de la temporalité](https://medium.com/cyberthreatintel/mitre-att-ck-de-limportance-de-la-temporalité-787fa81a024f)
+- [Purple Team Playbook: Threat Modeling for
+  Security Testingn](https://www.royalholloway.ac.uk/media/14914/techreport-mouchousf.pdf)
 
-# Support and addtional Features
+---
 
-For support and to report and issues, you may either file an issue at Github or email directly to nshalabi@cyber-distance.com
+# 📬 # Support and addtional Features
 
-# License
+For any customizations or business collaboration inquiries, please visit [applyingcode.com](http://www.applyingcode.com).
+For issues or feature requests, please file a GitHub issue.  
+Alternatively, email: **nader_shalabi@hotmail.com**
 
-```
-Copyright 2024 Nader Shallabi. All rights reserved. 
+---
+
+# ⚖️ License
+
+```text
+Copyright 2024 Nader Shallabi. All rights reserved.
 
 ATT&CK™ TOOLS CAN BE COPIED AND/OR DISTRIBUTED WITHOUT ANY EXPRESS PERMISSION OF NADER SHALLABI.
 
-THIS SOFTWARE IS PROVIDED BY NADER SHALLABI ''AS IS'' AND ANY EXPRESS OR IMPLIED
+THIS SOFTWARE IS PROVIDED BY NADER SHALLABI "AS IS" AND ANY EXPRESS OR IMPLIED
 WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
 FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL NADER SHALLABI
 OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
