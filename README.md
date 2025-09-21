@@ -264,7 +264,7 @@ Alternatively, email: **nader_shalabi@hotmail.com**
 # ⚖️ License
 
 ```text
-Copyright 2024 Nader Shallabi. All rights reserved.
+Copyright Nader Shallabi. All rights reserved.
 
 ATT&CK™ TOOLS CAN BE COPIED AND/OR DISTRIBUTED WITHOUT ANY EXPRESS PERMISSION OF NADER SHALLABI.
 
